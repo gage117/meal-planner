@@ -28,13 +28,8 @@ const userSchema = new Schema(
             type: String,
             required: true,
           },
-          description: {
-            type: String,
-            required: true,
-          },
           instructions: {
             type: String,
-            required: true,
           },
           ingredients: [
             {
