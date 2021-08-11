@@ -334,13 +334,22 @@ const userSeeds = [
 ];
 
 // !IMPORTANT: Adjust Schema before running this seed
-db.User.deleteMany({})
-  .then(() => db.User.collection.insertMany(mmoSeed))
-  .then((data) => {
-    console.log(data.result.n + ' records inserted!');
+const seedDB = async () => {
+  try {
+    // Seed SiteRecipes
+    await db.SiteRecipe.deleteMany({})
+    const data = await db.SiteRecipe.collection.insertMany(siteRecipeSeeds)
+    console.log('Seeded:', data.ops.length, 'recipes')
+    // Seed Users
+    await db.User.deleteMany({})
+    const userData = await db.User.collection.insertMany(userSeeds)
+    console.log('Seeded:', userData.ops.length, 'users')
     process.exit(0);
-  })
-  .catch((err) => {
+  }
+  catch (err) {
     console.error(err);
     process.exit(1);
-  });
+  }
+}
+
+seedDB()
