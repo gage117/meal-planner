@@ -1,5 +1,4 @@
 const express = require("express");
-
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
@@ -20,7 +19,7 @@ app.use(routes);
 // Connect to the Mongo DB
 const config = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false }
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/whatever", config
+  process.env.MONGODB_URI || `mongodb://localhost/${process.env.DB_NAME}`, config
 );
 
 // Start the API server
