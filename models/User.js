@@ -21,32 +21,30 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    recipes: {
-      personalRecipes: [
-        {
-          name: {
-            type: String,
-            required: true,
-          },
-          instructions: {
-            type: String,
-          },
-          ingredients: [
-            {
-              name: String,
-              quantity: Number,
-              unit: String,
-            },
-          ],
+    personalRecipes: [
+    {
+        name: {
+        type: String,
+        required: true,
         },
-      ],
-      siteRecipes: [
+        instructions: {
+        type: String,
+        },
+        ingredients: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'SiteRecipe'
-          }
-      ],
+            name: String,
+            quantity: Number,
+            unit: String,
+        },
+        ],
     },
+    ],
+    siteRecipes: [
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'SiteRecipe'
+        }
+    ],
   },
   // set this to use virtual below
   {
