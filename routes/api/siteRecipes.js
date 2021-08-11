@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const siteRecipeController = require("../../controllers/siteRecipeController");
 
-// Matches with "/api/siteRecipes"
+// Matches with "/api/siterecipes"
 router.route("/")
   .get(siteRecipeController.findAll)
   .post(siteRecipeController.create);
 
-// Matches with "/api/siteRecipes/:id"
+// Matches with "/api/siterecipes/:id"
 router
   .route("/:id")
   .get(siteRecipeController.findById)
