@@ -1,16 +1,15 @@
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
 import NavBar from './components/NavBar';
-import PlannerTable from './components/PlannerTable';
+import Main from './pages/Main';
+import MenuContext from './utils/MenuContext';
 
 function App() {
   return (
-    <Container>
-      <NavBar />
-      <Grid>
-        <PlannerTable />
-      </Grid>
-    </Container>
+    <>
+      <MenuContext.Provider >
+        <NavBar />
+        <Main />
+      </MenuContext.Provider>
+    </>
   );
 }
 
