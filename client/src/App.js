@@ -1,14 +1,16 @@
-
-import React from "react";
-import Home from "./pages/Home";
-import Nav from "./components/Nav";
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import NavBar from './components/NavBar';
+import PlannerTable from './components/PlannerTable';
 
 function App() {
   return (
-    <div>
-      <Nav />
-      <Home />
-    </div>
+    <Container>
+      <NavBar />
+      <Grid>
+        <PlannerTable />
+      </Grid>
+    </Container>
   );
 }
 
