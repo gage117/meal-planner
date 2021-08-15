@@ -1,7 +1,7 @@
 const path = require("path");
 const router = require("express").Router();
 const userRoutes = require("./users");
-const siteRecipeRoutes = require("./siteRecipe");
+const siteRecipeRoutes = require("./siteRecipes");
 
 // user routes
 router.use("/users", userRoutes);
