@@ -5,9 +5,14 @@ export default function PlannerGrid() {
   const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
   return (
-    <Grid>
+    <Grid
+      container
+      spacing={3}
+    >
       {days.map(day => (
-        <DayCard key={day} day={day} />
+        <Grid item key={day}>
+          <DayCard key={day} day={day} />
+        </Grid>
       ))}
     </Grid>
   );
