@@ -20,8 +20,12 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function DayCard({ day, plannerState, setPlannerState }) {
+export default function DayCard({ day, meals, plannerState, setPlannerState }) {
     const classes = useStyles();
+
+    const handleInputChange = (e) => {
+        console.log(e.target.value);
+    }
 
     return (
         <Card className={classes.cardContainer}>
@@ -34,34 +38,44 @@ export default function DayCard({ day, plannerState, setPlannerState }) {
                     className={classes.textCenter}
                 />
                 <InputLabel id={`${day}Breakfast`}>Breakfast</InputLabel>
-                <Select labelId={`${day}Breakfast`} className={classes.selectInput} value={plannerState[day.toLowerCase()].breakfast}>
-                    <MenuItem value={'Bacon'}>Bacon</MenuItem>
-                    <MenuItem value={'Eggs'}>Eggs</MenuItem>
-                    <MenuItem value={'Omelette'}>Omelette</MenuItem>
+                <Select labelId={`${day}Breakfast`} className={classes.selectInput} value={plannerState[day.toLowerCase()].breakfast} onChange={(e) => handleInputChange(e)}>
+                    {meals.breakfasts.map(meal => (
+                        <MenuItem key={meal} value={meal} >
+                            {meal}
+                        </MenuItem>
+                    ))}
                 </Select>
                 <InputLabel id={`${day}Lunch`}>Lunch</InputLabel>
                 <Select labelId={`${day}Lunch`} className={classes.selectInput} value={plannerState[day.toLowerCase()].lunch}>
-                    <MenuItem value={'Bacon'}>Bacon</MenuItem>
-                    <MenuItem value={'Eggs'}>Eggs</MenuItem>
-                    <MenuItem value={'Omelette'}>Omelette</MenuItem>
+                    {meals.lunches.map(meal => (
+                        <MenuItem key={meal} value={meal} >
+                            {meal}
+                        </MenuItem>
+                    ))}
                 </Select>
                 <InputLabel id={`${day}Dinner`}>Dinner</InputLabel>
                 <Select labelId={`${day}Dinner`} className={classes.selectInput} value={plannerState[day.toLowerCase()].dinner}>
-                    <MenuItem value={'Bacon'}>Bacon</MenuItem>
-                    <MenuItem value={'Eggs'}>Eggs</MenuItem>
-                    <MenuItem value={'Omelette'}>Omelette</MenuItem>
+                    {meals.dinners.map(meal => (
+                        <MenuItem key={meal} value={meal} >
+                            {meal}
+                        </MenuItem>
+                    ))}
                 </Select>
                 <InputLabel id={`${day}Snackeroo1`}>Snackeroo 1</InputLabel>
                 <Select labelId={`${day}Snackeroo1`} className={classes.selectInput} value={plannerState[day.toLowerCase()].snack1}>
-                    <MenuItem value={'Bacon'}>Bacon</MenuItem>
-                    <MenuItem value={'Eggs'}>Eggs</MenuItem>
-                    <MenuItem value={'Omelette'}>Omelette</MenuItem>
+                    {meals.snacks.map(meal => (
+                        <MenuItem key={meal} value={meal} >
+                            {meal}
+                        </MenuItem>
+                    ))}
                 </Select>
                 <InputLabel id={`${day}Snackeroo2`}>Snackeroo 2</InputLabel>
                 <Select labelId={`${day}Snackeroo2`} className={classes.selectInput} value={plannerState[day.toLowerCase()].snack2}>
-                    <MenuItem value={'Bacon'}>Bacon</MenuItem>
-                    <MenuItem value={'Eggs'}>Eggs</MenuItem>
-                    <MenuItem value={'Omelette'}>Omelette</MenuItem>
+                    {meals.snacks.map(meal => (
+                        <MenuItem key={meal} value={meal} >
+                            {meal}
+                        </MenuItem>
+                    ))}
                 </Select>
             </Grid>
         </Card>
