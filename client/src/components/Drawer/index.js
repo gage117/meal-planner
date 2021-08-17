@@ -8,8 +8,13 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import TodayIcon from '@material-ui/icons/Today';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import ExploreIcon from '@material-ui/icons/Explore';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ListAltIcon from '@material-ui/icons/ListAlt';
 
 // drawerWidth variable is declared in Main page
 const drawerWidth = 240;
@@ -38,6 +43,14 @@ const useStyles = makeStyles((theme) => ({
     drawer: {
       width: drawerWidth,
       flexShrink: 0,
+    },
+    drawerHeader: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: theme.spacing(0, 1),
+      // necessary for content to be below app bar
+      ...theme.mixins.toolbar,
+      justifyContent: 'flex-end',
     },
     drawerPaper: {
       width: drawerWidth,
@@ -76,18 +89,34 @@ function Drawer({open, setOpen}) {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Meal Planner', 'Shopping List', 'Saved Recipes', 'Explore Recipes', 'How Foodroid Works'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon>
+                {(() => {
+                  switch (text) {
+                  case 'Meal Planner':
+                    return <TodayIcon />
+                  case 'Shopping List':
+                    return <ListAltIcon />
+                  case 'Saved Recipes':
+                    return <FavoriteBorderIcon />
+                  case 'Explore Recipes':
+                    return <ExploreIcon />
+                  case 'How Foodroid Works':
+                    return <HelpOutlineIcon />
+                  default:
+                    break;
+                }})()}
+              </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['My Profile', 'Logout'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon>{text === 'My Profile' ? <AccountCircleIcon /> : <ExitToAppIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
