@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
     selectInput: {
         marginBottom: '15px'
     },
+    textCenter: {
+        textAlign: 'center'
+    },
 }));
 
 export default function DayCard({ day }) {
@@ -28,6 +31,7 @@ export default function DayCard({ day }) {
             >
                 <CardHeader
                     title={day}
+                    className={classes.textCenter}
                 />
                 <InputLabel id={`${day}Breakfast`}>Breakfast</InputLabel>
                 <Select labelId={`${day}Breakfast`} className={classes.selectInput}>
