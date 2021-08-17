@@ -7,7 +7,7 @@ const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
 export default function PlannerGrid() {
   const [plannerState, setPlannerState] = useState({
     sunday: {
-      breakfast: "",
+      breakfast: "Bacon",
       lunch: "",
       dinner: "",
       snack1: "",
@@ -15,7 +15,7 @@ export default function PlannerGrid() {
     },
     monday: {
       breakfast: "",
-      lunch: "",
+      lunch: "Eggs",
       dinner: "",
       snack1: "",
       snack2: ""
@@ -23,7 +23,7 @@ export default function PlannerGrid() {
     tuesday: {
       breakfast: "",
       lunch: "",
-      dinner: "",
+      dinner: "Omelette",
       snack1: "",
       snack2: ""
     },
@@ -31,7 +31,7 @@ export default function PlannerGrid() {
       breakfast: "",
       lunch: "",
       dinner: "",
-      snack1: "",
+      snack1: "Eggs",
       snack2: ""
     },
     thursday: {
@@ -39,7 +39,7 @@ export default function PlannerGrid() {
       lunch: "",
       dinner: "",
       snack1: "",
-      snack2: ""
+      snack2: "Bacon"
     },
     friday: {
       breakfast: "",
