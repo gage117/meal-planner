@@ -57,6 +57,42 @@ export default function PlannerGrid() {
     }
   });
 
+  // TODO: Set from database call
+  const meals = {
+    breakfasts: [
+      "Keto Egg Muffins",
+      "Fried eggs",
+      "Omelette",
+      "Fancy Yogurt"
+    ],
+    lunches: [
+      "Tuna Lunch Salad",
+      "Keto Lettuce Wraps",
+      "Bacon Wrapped Asparagus",
+      "Keto Taquitos"
+    ],
+    dinners: [
+      "Keto Chili",
+      "Meatball Parm Casserole",
+      "Steak",
+      "Baked Salmon"
+    ],
+    snacks: [
+      "Beef Jerky",
+      "Hard Boiled Eggs",
+      "String Cheese",
+      "Pickles",
+      "Pork Rinds",
+      "Pecans",
+      "Almonds",
+      "Walnuts",
+      "Greek Yogurt",
+      "Cottage Cheese",
+      "Blackberries",
+      "Raspberries"
+    ]
+  };
+
   return (
     <Grid
       container
@@ -70,6 +106,7 @@ export default function PlannerGrid() {
             day={day} 
             plannerState={plannerState} 
             setPlannerState={setPlannerState}  
+            meals={meals}
           />
         </Grid>
       ))}
