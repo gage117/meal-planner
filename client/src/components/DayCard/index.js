@@ -23,6 +23,14 @@ const useStyles = makeStyles(theme => ({
 export default function DayCard({ day, meals, plannerState, setPlannerState }) {
     const classes = useStyles();
 
+    const handleSelectChange = ({name, value}) => {
+        // Split name param at dash to get day and which meal of the day (i.e. breakfast)
+        const [day, dayMeal] = name.split('-');
+        const mealName = value;
+
+        console.log(day, dayMeal, mealName);
+    }
+
     return (
         <Card className={classes.cardContainer}>
             <Grid
@@ -33,40 +41,40 @@ export default function DayCard({ day, meals, plannerState, setPlannerState }) {
                     title={day}
                     className={classes.textCenter}
                 />
-                <InputLabel id={`${day}Breakfast`}>Breakfast</InputLabel>
-                <Select labelId={`${day}Breakfast`} className={classes.selectInput} value={plannerState[day.toLowerCase()].breakfast}>
+                <InputLabel id={`${day}-breakfast`}>Breakfast</InputLabel>
+                <Select labelId={`${day}-breakfast`} name={`${day}-breakfast`} className={classes.selectInput} value={plannerState[day.toLowerCase()].breakfast} onChange={(e) => handleSelectChange(e.target)}>
                     {meals.breakfasts.map(meal => (
                         <MenuItem key={meal} value={meal} >
                             {meal}
                         </MenuItem>
                     ))}
                 </Select>
-                <InputLabel id={`${day}Lunch`}>Lunch</InputLabel>
-                <Select labelId={`${day}Lunch`} className={classes.selectInput} value={plannerState[day.toLowerCase()].lunch}>
+                <InputLabel id={`${day}-lunch`}>Lunch</InputLabel>
+                <Select labelId={`${day}-lunch`} name={`${day}-lunch`} className={classes.selectInput} value={plannerState[day.toLowerCase()].lunch} onChange={(e) => handleSelectChange(e.target)}>
                     {meals.lunches.map(meal => (
                         <MenuItem key={meal} value={meal} >
                             {meal}
                         </MenuItem>
                     ))}
                 </Select>
-                <InputLabel id={`${day}Dinner`}>Dinner</InputLabel>
-                <Select labelId={`${day}Dinner`} className={classes.selectInput} value={plannerState[day.toLowerCase()].dinner}>
+                <InputLabel id={`${day}-dinner`}>Dinner</InputLabel>
+                <Select labelId={`${day}-dinner`} name={`${day}-dinner`} className={classes.selectInput} value={plannerState[day.toLowerCase()].dinner} onChange={(e) => handleSelectChange(e.target)}>
                     {meals.dinners.map(meal => (
                         <MenuItem key={meal} value={meal} >
                             {meal}
                         </MenuItem>
                     ))}
                 </Select>
-                <InputLabel id={`${day}Snackeroo1`}>Snackeroo 1</InputLabel>
-                <Select labelId={`${day}Snackeroo1`} className={classes.selectInput} value={plannerState[day.toLowerCase()].snack1}>
+                <InputLabel id={`${day}-snackeroo1`}>Snackeroo 1</InputLabel>
+                <Select labelId={`${day}-snackeroo1`} name={`${day}-snack1`} className={classes.selectInput} value={plannerState[day.toLowerCase()].snack1} onChange={(e) => handleSelectChange(e.target)}>
                     {meals.snacks.map(meal => (
                         <MenuItem key={meal} value={meal} >
                             {meal}
                         </MenuItem>
                     ))}
                 </Select>
-                <InputLabel id={`${day}Snackeroo2`}>Snackeroo 2</InputLabel>
-                <Select labelId={`${day}Snackeroo2`} className={classes.selectInput} value={plannerState[day.toLowerCase()].snack2}>
+                <InputLabel id={`${day}-snackeroo2`}>Snackeroo 2</InputLabel>
+                <Select labelId={`${day}-snackeroo2`} name={`${day}-snack2`} className={classes.selectInput} value={plannerState[day.toLowerCase()].snack2} onChange={(e) => handleSelectChange(e.target)}>
                     {meals.snacks.map(meal => (
                         <MenuItem key={meal} value={meal} >
                             {meal}
