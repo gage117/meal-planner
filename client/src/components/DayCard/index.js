@@ -23,10 +23,6 @@ const useStyles = makeStyles(theme => ({
 export default function DayCard({ day, meals, plannerState, setPlannerState }) {
     const classes = useStyles();
 
-    const handleInputChange = (e) => {
-        console.log(e.target.value);
-    }
-
     return (
         <Card className={classes.cardContainer}>
             <Grid
@@ -38,7 +34,7 @@ export default function DayCard({ day, meals, plannerState, setPlannerState }) {
                     className={classes.textCenter}
                 />
                 <InputLabel id={`${day}Breakfast`}>Breakfast</InputLabel>
-                <Select labelId={`${day}Breakfast`} className={classes.selectInput} value={plannerState[day.toLowerCase()].breakfast} onChange={(e) => handleInputChange(e)}>
+                <Select labelId={`${day}Breakfast`} className={classes.selectInput} value={plannerState[day.toLowerCase()].breakfast}>
                     {meals.breakfasts.map(meal => (
                         <MenuItem key={meal} value={meal} >
                             {meal}
