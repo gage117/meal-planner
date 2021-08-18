@@ -1,10 +1,77 @@
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
 import Grid from '@material-ui/core/Grid';
 import DayCard from '../DayCard';
 
 const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
+const reducer = (state, action) => {
+  switch(action.type){
+    case "add_product":
+      return state = [...state, {...action.payload, id: state.length + 1}]
+
+    case "remove_product":
+      return state = state.filter( prod => prod.id !== action.payload.id )
+      
+    default:
+      return state
+  }
+}
+
 export default function PlannerGrid() {
+
+  const [mealPlan, dispatch] = useReducer(reducer, {
+    sunday: {
+      breakfast: "Fried Eggs",
+      lunch: "Tuna Lunch Salad",
+      dinner: "Keto Chili",
+      snack1: "Beef Jerky",
+      snack2: "Raspberries"
+    },
+    monday: {
+      breakfast: "",
+      lunch: "Eggs",
+      dinner: "",
+      snack1: "",
+      snack2: ""
+    },
+    tuesday: {
+      breakfast: "",
+      lunch: "",
+      dinner: "Omelette",
+      snack1: "",
+      snack2: ""
+    },
+    wednesday: {
+      breakfast: "",
+      lunch: "",
+      dinner: "",
+      snack1: "Eggs",
+      snack2: ""
+    },
+    thursday: {
+      breakfast: "",
+      lunch: "",
+      dinner: "",
+      snack1: "",
+      snack2: "Bacon"
+    },
+    friday: {
+      breakfast: "",
+      lunch: "",
+      dinner: "",
+      snack1: "",
+      snack2: ""
+    },
+    saturday: {
+      breakfast: "",
+      lunch: "",
+      dinner: "",
+      snack1: "",
+      snack2: ""
+    }
+  })
+
+  // TODO: Take out if unused due to reducer
   const [plannerState, setPlannerState] = useState({
     sunday: {
       breakfast: "Fried Eggs",
@@ -104,7 +171,7 @@ export default function PlannerGrid() {
           <DayCard 
             key={day} 
             day={day} 
-            plannerState={plannerState} 
+            mealPlan={mealPlan} 
             setPlannerState={setPlannerState}  
             meals={meals}
           />
