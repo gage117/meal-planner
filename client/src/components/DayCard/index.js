@@ -28,7 +28,7 @@ export default function DayCard({ day, meals, mealPlan, dispatch }) {
         const [day, whichMeal] = name.split('-');
         const mealName = value;
 
-        dispatch({day, whichMeal, mealName});
+        dispatch({type: 'UPDATE_MEAL_PLAN', payload: {day, whichMeal, mealName}});
     }
 
     return (

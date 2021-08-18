@@ -1,19 +1,25 @@
-import { useState, useReducer } from 'react';
+import { useState, useReducer, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import DayCard from '../DayCard';
 
 const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
 const reducer = (state, action) => {
-  if (!action.day || !action.whichMeal || !action.mealName) {
+  if(action.type === 'UPDATE_MEAL_PLAN') {
+    if (!action.payload.day || !action.payload.whichMeal || !action.payload.mealName) {
+      return state;
+    }
+    // Modify meal in state and then return copy of state
+    state[action.payload.day.toLowerCase()][action.payload.whichMeal.toLowerCase()] = action.payload.mealName;
+    localStorage.setItem("mealPlan", JSON.stringify(state));
+    return state = {
+      ...state
+    };
+  } else if (action.type === 'INITIALIZE_FROM_LOCALSTORAGE') {
+    return state = JSON.parse(localStorage.getItem("mealPlan"));
+  } else {
     return state;
   }
-
-  // Modify meal in state and then return copy of state
-  state[action.day.toLowerCase()][action.whichMeal.toLowerCase()] = action.mealName;
-  return {
-    ...state
-  };
 }
 
 export default function PlannerGrid() {
@@ -69,6 +75,10 @@ export default function PlannerGrid() {
       snack2: ""
     }
   })
+
+  useEffect(() => {
+    dispatch({ type: 'INITIALIZE_FROM_LOCALSTORAGE'});
+  }, []);
 
   // TODO: Take out if unused due to reducer
   const [plannerState, setPlannerState] = useState({
