@@ -5,16 +5,15 @@ import DayCard from '../DayCard';
 const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
 const reducer = (state, action) => {
-  switch(action.type){
-    case "add_product":
-      return state = [...state, {...action.payload, id: state.length + 1}]
-
-    case "remove_product":
-      return state = state.filter( prod => prod.id !== action.payload.id )
-      
-    default:
-      return state
+  if (!action.day || !action.whichMeal || !action.mealName) {
+    return state;
   }
+
+  // Modify meal in state and then return copy of state
+  state[action.day.toLowerCase()][action.whichMeal.toLowerCase()] = action.mealName;
+  return {
+    ...state
+  };
 }
 
 export default function PlannerGrid() {
@@ -29,7 +28,7 @@ export default function PlannerGrid() {
     },
     monday: {
       breakfast: "",
-      lunch: "Eggs",
+      lunch: "",
       dinner: "",
       snack1: "",
       snack2: ""
@@ -37,7 +36,7 @@ export default function PlannerGrid() {
     tuesday: {
       breakfast: "",
       lunch: "",
-      dinner: "Omelette",
+      dinner: "",
       snack1: "",
       snack2: ""
     },
@@ -45,7 +44,7 @@ export default function PlannerGrid() {
       breakfast: "",
       lunch: "",
       dinner: "",
-      snack1: "Eggs",
+      snack1: "",
       snack2: ""
     },
     thursday: {
@@ -53,7 +52,7 @@ export default function PlannerGrid() {
       lunch: "",
       dinner: "",
       snack1: "",
-      snack2: "Bacon"
+      snack2: ""
     },
     friday: {
       breakfast: "",
@@ -172,7 +171,7 @@ export default function PlannerGrid() {
             key={day} 
             day={day} 
             mealPlan={mealPlan} 
-            setPlannerState={setPlannerState}  
+            dispatch={dispatch} 
             meals={meals}
           />
         </Grid>
