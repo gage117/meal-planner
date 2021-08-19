@@ -160,25 +160,27 @@ function Drawer({open, setOpen}) {
         </List>
         <Divider />
         <List>
-          {['My Profile', 'Logout'].map((text, index) => (
-            <ListItem button key={text}>
-              {text === 'My Profile' ? (
+          {['My Profile', 'Logout'].map((text, index) => {
+            return text === 'My Profile' ? (
                 <Link to={"/profile"}>
-                  <ListItemIcon>
-                    <AccountCircleIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
+                  <ListItem button key={text}>
+                    <ListItemIcon classes={{root: classes.iconWidthOverride}}>
+                      <AccountCircleIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItem>
                 </Link>
               ) : (
-                <Link to={"/logout"}>
-                <ListItemIcon>
-                  <ExitToAppIcon />
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </Link>
+                <Link to={"/logout"}> 
+                  <ListItem button key={text}>
+                    <ListItemIcon classes={{root: classes.iconWidthOverride}}>
+                      <ExitToAppIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                </Link>
               )}
-            </ListItem>
-          ))}
+          )}
         </List>
       </MuiDrawer>
     );
