@@ -16,6 +16,8 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ListAltIcon from '@material-ui/icons/ListAlt';
+// import stylesheet simply for accessing pseudo-elements because inline styles don't allow access to them
+import "./styles.css"
 
 // drawerWidth variable is declared in Main page
 const drawerWidth = 240;
