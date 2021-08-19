@@ -190,6 +190,20 @@ const mockPopulatedMealPlan = {
     ]
 }
 
+const rows = [
+    { id:1, ingredient: 'Carrots', quantity: 3, unit: "" },
+    { id:2, ingredient: 'Potatoes', quantity: 3, unit: "lbs" },
+    { id:3, ingredient: 'Beef', quantity: 4, unit: "oz" },
+  ];
+  
+  const columns = [
+    { field: 'id', headerName: 'ID', hide: true },
+    { field: 'ingredient', headerName: 'Ingredient', width: 250 },
+    { field: 'quantity', headerName: 'Quantity', width: 140 },
+    { field: 'unit', headerName: 'Unit', width: 150 },
+    { field: 'haveOnHand', headerName: 'Have On Hand', type: 'boolean', isEditable: true, width: 150 },
+  ];
+
 function reduceIngredients(mealPlan) {
     const ingredientTotals = {};
     // Go over each meal of the day
@@ -197,6 +211,7 @@ function reduceIngredients(mealPlan) {
         console.log(mealArray);
         // Go over each meal in that array
         mealArray.map(meal => {
+            console.log(meal);
             // Go over each ingredient in that meal
             meal.ingredients.forEach(ingredient => {
                 // TODO: Implement unit conversion
@@ -224,6 +239,8 @@ export default function ShoppingList() {
     return (
         <MealPlannerContext.Consumer>
             {({mealPlan}) => (
+                <>
+                <DataGrid rows={rows} columns={columns} autoHeight checkboxSelection/>
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={6} className={classes.root}>
                         <Typography variant="h6" className={classes.title}>
@@ -244,7 +261,9 @@ export default function ShoppingList() {
                             </List>
                         </div>
                     </Grid>
-                </Grid>)}
+                </Grid>
+                </>
+            )}
         </MealPlannerContext.Consumer>
     )
 }
