@@ -21,6 +21,9 @@ import ListAltIcon from '@material-ui/icons/ListAlt';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
+  iconWidthOverride: {
+    minWidth: "36px"
+  },
     appBar: {
       transition: theme.transitions.create(['margin', 'width'], {
         easing: theme.transitions.easing.sharp,
@@ -98,7 +101,7 @@ function Drawer({open, setOpen}) {
                   return (
                     <Link to={"/"}>
                       <ListItem button key={text}>
-                        <ListItemIcon>
+                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <TodayIcon />
                         </ListItemIcon>
                         <ListItemText primary={text} />
@@ -109,7 +112,7 @@ function Drawer({open, setOpen}) {
                   return (
                     <Link to={"/shopping-list"}>
                       <ListItem button key={text}>
-                        <ListItemIcon>
+                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <ListAltIcon />
                         </ListItemIcon>
                         <ListItemText primary={text} />
@@ -120,7 +123,7 @@ function Drawer({open, setOpen}) {
                   return (
                     <Link to={"/saved-recipes"}>
                       <ListItem button key={text}>
-                        <ListItemIcon>
+                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <FavoriteBorderIcon />
                         </ListItemIcon>
                         <ListItemText primary={text} />
@@ -131,7 +134,7 @@ function Drawer({open, setOpen}) {
                   return (
                     <Link to={"/explore"}>
                       <ListItem button key={text}>
-                        <ListItemIcon>
+                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <ExploreIcon />
                         </ListItemIcon>
                         <ListItemText primary={text} />
@@ -142,7 +145,7 @@ function Drawer({open, setOpen}) {
                   return (
                     <Link to={"/how-it-works"}>
                       <ListItem button key={text}>
-                        <ListItemIcon>
+                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <HelpOutlineIcon />
                         </ListItemIcon>
                         <ListItemText primary={text} />
