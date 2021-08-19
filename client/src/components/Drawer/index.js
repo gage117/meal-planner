@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MuiDrawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -90,34 +91,89 @@ function Drawer({open, setOpen}) {
         <Divider />
         <List>
           {['Meal Planner', 'Shopping List', 'Saved Recipes', 'Explore Recipes', 'How Foodroid Works'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {(() => {
-                  switch (text) {
-                  case 'Meal Planner':
-                    return <TodayIcon />
-                  case 'Shopping List':
-                    return <ListAltIcon />
-                  case 'Saved Recipes':
-                    return <FavoriteBorderIcon />
-                  case 'Explore Recipes':
-                    return <ExploreIcon />
-                  case 'How Foodroid Works':
-                    return <HelpOutlineIcon />
-                  default:
-                    break;
-                }})()}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
+            <>
+              {(() => {
+                switch (text) {
+                case 'Meal Planner':
+                  return (
+                    <Link to={"/"}>
+                      <ListItem button key={text}>
+                        <ListItemIcon>
+                          <TodayIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    </Link>
+                  )
+                case 'Shopping List':
+                  return (
+                    <Link to={"/shopping-list"}>
+                      <ListItem button key={text}>
+                        <ListItemIcon>
+                          <ListAltIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    </Link>
+                  )
+                case 'Saved Recipes':
+                  return (
+                    <Link to={"/saved-recipes"}>
+                      <ListItem button key={text}>
+                        <ListItemIcon>
+                          <FavoriteBorderIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    </Link>
+                  )
+                case 'Explore Recipes':
+                  return (
+                    <Link to={"/explore"}>
+                      <ListItem button key={text}>
+                        <ListItemIcon>
+                          <ExploreIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    </Link>
+                  )
+                case 'How Foodroid Works':
+                  return (
+                    <Link to={"/how-it-works"}>
+                      <ListItem button key={text}>
+                        <ListItemIcon>
+                          <HelpOutlineIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    </Link>
+                  )
+                default:
+                  break;
+              }})()}
+            </>
           ))}
         </List>
         <Divider />
         <List>
           {['My Profile', 'Logout'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{text === 'My Profile' ? <AccountCircleIcon /> : <ExitToAppIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+              {text === 'My Profile' ? (
+                <Link to={"/profile"}>
+                  <ListItemIcon>
+                    <AccountCircleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </Link>
+              ) : (
+                <Link to={"/logout"}>
+                <ListItemIcon>
+                  <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </Link>
+              )}
             </ListItem>
           ))}
         </List>
