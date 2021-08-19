@@ -1,7 +1,5 @@
 import { createContext } from "react";
 
-const MealPlanContext = createContext({
-  open: false
-});
+const MealPlanContext = createContext();
 
 export default MealPlanContext;

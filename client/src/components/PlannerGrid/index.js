@@ -1,4 +1,5 @@
 import { useState, useReducer, useEffect } from 'react';
+import MealPlanContext from '../../utils/MealPlanContext';
 import Grid from '@material-ui/core/Grid';
 import DayCard from '../DayCard';
 
@@ -24,61 +25,61 @@ const reducer = (state, action) => {
 
 export default function PlannerGrid() {
 
-  const [mealPlan, dispatch] = useReducer(reducer, {
-    sunday: {
-      breakfast: "Fried Eggs",
-      lunch: "Tuna Lunch Salad",
-      dinner: "Keto Chili",
-      snack1: "Beef Jerky",
-      snack2: "Raspberries"
-    },
-    monday: {
-      breakfast: "",
-      lunch: "",
-      dinner: "",
-      snack1: "",
-      snack2: ""
-    },
-    tuesday: {
-      breakfast: "",
-      lunch: "",
-      dinner: "",
-      snack1: "",
-      snack2: ""
-    },
-    wednesday: {
-      breakfast: "",
-      lunch: "",
-      dinner: "",
-      snack1: "",
-      snack2: ""
-    },
-    thursday: {
-      breakfast: "",
-      lunch: "",
-      dinner: "",
-      snack1: "",
-      snack2: ""
-    },
-    friday: {
-      breakfast: "",
-      lunch: "",
-      dinner: "",
-      snack1: "",
-      snack2: ""
-    },
-    saturday: {
-      breakfast: "",
-      lunch: "",
-      dinner: "",
-      snack1: "",
-      snack2: ""
-    }
-  })
+  // const [mealPlan, dispatch] = useReducer(reducer, {
+  //   sunday: {
+  //     breakfast: "Fried Eggs",
+  //     lunch: "Tuna Lunch Salad",
+  //     dinner: "Keto Chili",
+  //     snack1: "Beef Jerky",
+  //     snack2: "Raspberries"
+  //   },
+  //   monday: {
+  //     breakfast: "",
+  //     lunch: "",
+  //     dinner: "",
+  //     snack1: "",
+  //     snack2: ""
+  //   },
+  //   tuesday: {
+  //     breakfast: "",
+  //     lunch: "",
+  //     dinner: "",
+  //     snack1: "",
+  //     snack2: ""
+  //   },
+  //   wednesday: {
+  //     breakfast: "",
+  //     lunch: "",
+  //     dinner: "",
+  //     snack1: "",
+  //     snack2: ""
+  //   },
+  //   thursday: {
+  //     breakfast: "",
+  //     lunch: "",
+  //     dinner: "",
+  //     snack1: "",
+  //     snack2: ""
+  //   },
+  //   friday: {
+  //     breakfast: "",
+  //     lunch: "",
+  //     dinner: "",
+  //     snack1: "",
+  //     snack2: ""
+  //   },
+  //   saturday: {
+  //     breakfast: "",
+  //     lunch: "",
+  //     dinner: "",
+  //     snack1: "",
+  //     snack2: ""
+  //   }
+  // });
 
-  useEffect(() => {
-    dispatch({ type: 'INITIALIZE_FROM_LOCALSTORAGE'});
-  }, []);
+  // useEffect(() => {
+  //   dispatch({ type: 'INITIALIZE_FROM_LOCALSTORAGE'});
+  // }, []);
 
   // TODO: Take out if unused due to reducer
   const [plannerState, setPlannerState] = useState({
@@ -170,22 +171,29 @@ export default function PlannerGrid() {
   };
 
   return (
-    <Grid
-      container
-      justifyContent="space-evenly"
-      spacing={4}
-    >
-      {days.map(day => (
-        <Grid item xs={12} lg={3} key={day}>
-          <DayCard 
-            key={day} 
-            day={day} 
-            mealPlan={mealPlan} 
-            dispatch={dispatch} 
-            meals={meals}
-          />
+    <MealPlanContext.Consumer>
+      {({mealPlan, dispatch}) => {
+        return (
+          <Grid
+          container
+          justifyContent="space-evenly"
+          spacing={4}
+        >
+          {days.map(day => (
+            <Grid item xs={12} lg={3} key={day}>
+              <DayCard 
+                key={day} 
+                day={day} 
+                mealPlan={mealPlan} 
+                dispatch={dispatch} 
+                meals={meals}
+              />
+            </Grid>
+          ))}
         </Grid>
-      ))}
-    </Grid>
+        )
+      }
+    }
+    </MealPlanContext.Consumer>
   );
 }
