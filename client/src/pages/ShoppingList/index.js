@@ -9,6 +9,7 @@ import {
     ListItemSecondaryAction,
     IconButton,
 } from '@material-ui/core';
+import { DataGrid } from '@material-ui/data-grid';
 import { CheckCircle as CheckCircleIcon } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
