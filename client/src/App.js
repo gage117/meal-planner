@@ -4,21 +4,15 @@ import Main from './pages/Main';
 import MealPlanContext from './utils/MealPlanContext';
 
 const reducer = (state, action) => {
-  if(action.type === 'UPDATE_MEAL_PLAN') {
-    if (!action.payload.day || !action.payload.whichMeal || !action.payload.mealName) {
-      return state;
-    }
-    // Modify meal in state and then return copy of state
-    state[action.payload.day.toLowerCase()][action.payload.whichMeal.toLowerCase()] = action.payload.mealName;
-    localStorage.setItem("mealPlan", JSON.stringify(state));
-    return state = {
-      ...state
-    };
-  } else if (action.type === 'INITIALIZE_FROM_LOCALSTORAGE') {
-    return state = JSON.parse(localStorage.getItem("mealPlan"));
-  } else {
+  if (!action.day || !action.whichMeal || !action.mealName) {
     return state;
   }
+  // Modify meal in state and then return copy of state
+  state[action.day.toLowerCase()][action.whichMeal.toLowerCase()] = action.mealName;
+  localStorage.setItem("mealPlan", JSON.stringify(state));
+  return state = {
+    ...state
+  };
 }
 
 const defaultState = {
