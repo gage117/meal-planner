@@ -1,6 +1,11 @@
 import { useState, useReducer } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import NavBar from './components/NavBar';
-import Main from './pages/Main';
+import {Drawer, drawerWidth} from './components/Drawer';
+import PlannerGrid from './pages/PlannerGrid';
 import MealPlanContext from './utils/MealPlanContext';
 
 const reducer = (state, action) => {
@@ -67,19 +72,56 @@ const defaultState = {
   }
 }
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: -drawerWidth,
+  },
+  contentShift: {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
+  },
+}));
+
 function App() {
+  const classes = useStyles();
+
   // Drawer open/close state
   const [open, setOpen] = useState(true);
   // Initialize meal plan from local storage or set to default template
   const [mealPlan, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem("mealPlan")) || defaultState);
 
   return (
-    <>
+    <div className={classes.root}>
       <MealPlanContext.Provider value={{ mealPlan, dispatch }}>
+        <CssBaseline />
         <NavBar setOpen={setOpen} open={open} />
-        <Main setOpen={setOpen} open={open} />
+        <Drawer open={open} setOpen={setOpen} drawerWidth={drawerWidth} />
+        <main
+          className={clsx(classes.content, {
+            [classes.contentShift]: open,
+          })}
+        >
+          <Router>
+            <Switch>
+              <Route exact path="/" component={PlannerGrid} />
+              <Route path="/planner" component={PlannerGrid} />
+            </Switch>
+          </Router>
+        </main>
       </MealPlanContext.Provider>
-    </>
+    </div>
   );
 }
 

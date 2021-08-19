@@ -1,6 +1,6 @@
 import MealPlanContext from '../../utils/MealPlanContext';
 import Grid from '@material-ui/core/Grid';
-import DayCard from '../DayCard';
+import DayCard from '../../components/DayCard';
 
 const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
