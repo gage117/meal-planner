@@ -1,3 +1,4 @@
+import {Route, Switch} from 'react-router';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -39,7 +40,10 @@ export default function Main({open, setOpen}) {
           [classes.contentShift]: open,
         })}
       >
-        <PlannerGrid />
+        <Switch>
+          <Route path="/" component={PlannerGrid} />
+          <Route path="/planner" component={PlannerGrid} />
+        </Switch>
       </main>
     </div>
   );
