@@ -8,8 +8,7 @@ import {
     ListItemSecondaryAction,
     IconButton,
 } from '@material-ui/core';
-
-import { Delete as DeleteIcon, CheckCircle as CheckCircleIcon } from '@material-ui/icons';
+import { CheckCircle as CheckCircleIcon } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     root: {
