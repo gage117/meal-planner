@@ -1,4 +1,5 @@
-import MealPlannerContext from '../../utils/MealPlanContext';
+import { useContext } from 'react';
+import {MealPlanContext} from '../../utils/MealPlanContext';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     Grid, 
@@ -85,38 +86,35 @@ function reduceIngredients(mealPlan) {
 }
 
 export default function ShoppingList() {
+    const { mealPlan } = useContext(MealPlanContext);
     const classes = useStyles();
 
     template.ingredientTotals = reduceIngredients(template);
 
     return (
-        <MealPlannerContext.Consumer>
-            {({mealPlan}) => (
-                <Box className={classes.root}>
-                {/* <DataGrid rows={template.ingredientTotals} columns={columns} autoHeight checkboxSelection/> */}
-                <Grid container spacing={3}>
-                    <Grid item xs={12} md={6} className={classes.root}>
-                        <Typography variant="h6" className={classes.title}>
-                            Shopping List
-                        </Typography>
-                        <div className={classes.demo}>
-                            <List>
-                            {template.ingredientTotals.map((ingredient, index) => (
-                                <ListItem key={index}>
-                                    <ListItemText primary={ingredient.ingredient} secondary={`Quantity: ${ingredient.quantity} ${ingredient.unit}`}/>
-                                    <ListItemSecondaryAction>
-                                        <IconButton edge="end" aria-label="delete">
-                                        <CheckCircleIcon />
-                                        </IconButton>
-                                    </ListItemSecondaryAction>
-                                </ListItem>
-                                ))}
-                            </List>
-                        </div>
-                    </Grid>
-                </Grid>
-                </Box>
-            )}
-        </MealPlannerContext.Consumer>
+        <Box className={classes.root}>
+        {/* <DataGrid rows={template.ingredientTotals} columns={columns} autoHeight checkboxSelection/> */}
+        <Grid container spacing={3}>
+            <Grid item xs={12} md={6} className={classes.root}>
+                <Typography variant="h6" className={classes.title}>
+                    Shopping List
+                </Typography>
+                <div className={classes.demo}>
+                    <List>
+                    {template.ingredientTotals.map((ingredient, index) => (
+                        <ListItem key={index}>
+                            <ListItemText primary={ingredient.ingredient} secondary={`Quantity: ${ingredient.quantity} ${ingredient.unit}`}/>
+                            <ListItemSecondaryAction>
+                                <IconButton edge="end" aria-label="delete">
+                                <CheckCircleIcon />
+                                </IconButton>
+                            </ListItemSecondaryAction>
+                        </ListItem>
+                        ))}
+                    </List>
+                </div>
+            </Grid>
+        </Grid>
+        </Box>
     )
 }
