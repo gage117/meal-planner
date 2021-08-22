@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import {MealPlanContext} from '../../utils/MealPlanContext';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -20,7 +22,10 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function DayCard({ day, meals, mealPlan, dispatch }) {
+export default function DayCard({ day, meals }) {
+    const { mealPlan, dispatch } = useContext(MealPlanContext);
+
+    console.log("DayCard");
     const classes = useStyles();
 
     const handleSelectChange = ({name, value}) => {
@@ -42,7 +47,7 @@ export default function DayCard({ day, meals, mealPlan, dispatch }) {
                     className={classes.textCenter}
                 />
                 <InputLabel id={`${day}-breakfast`}>Breakfast</InputLabel>
-                <Select labelId={`${day}-breakfast`} name={`${day}-breakfast`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].breakfast} onChange={(e) => handleSelectChange(e.target)}>
+                <Select labelId={`${day}-breakfast`} name={`${day}-breakfast`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].breakfast.name} onChange={(e) => handleSelectChange(e.target)}>
                     <MenuItem value="" >
                         None
                     </MenuItem>
@@ -53,7 +58,7 @@ export default function DayCard({ day, meals, mealPlan, dispatch }) {
                     ))}
                 </Select>
                 <InputLabel id={`${day}-lunch`}>Lunch</InputLabel>
-                <Select labelId={`${day}-lunch`} name={`${day}-lunch`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].lunch} onChange={(e) => handleSelectChange(e.target)}>
+                <Select labelId={`${day}-lunch`} name={`${day}-lunch`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].lunch.name} onChange={(e) => handleSelectChange(e.target)}>
                     <MenuItem value="" >
                         None
                     </MenuItem>
@@ -64,7 +69,7 @@ export default function DayCard({ day, meals, mealPlan, dispatch }) {
                     ))}
                 </Select>
                 <InputLabel id={`${day}-dinner`}>Dinner</InputLabel>
-                <Select labelId={`${day}-dinner`} name={`${day}-dinner`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].dinner} onChange={(e) => handleSelectChange(e.target)}>
+                <Select labelId={`${day}-dinner`} name={`${day}-dinner`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].dinner.name} onChange={(e) => handleSelectChange(e.target)}>
                     <MenuItem value="" >
                         None
                     </MenuItem>
@@ -75,7 +80,7 @@ export default function DayCard({ day, meals, mealPlan, dispatch }) {
                     ))}
                 </Select>
                 <InputLabel id={`${day}-snackeroo1`}>Snackeroo 1</InputLabel>
-                <Select labelId={`${day}-snackeroo1`} name={`${day}-snack1`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].snack1} onChange={(e) => handleSelectChange(e.target)}>
+                <Select labelId={`${day}-snackeroo1`} name={`${day}-snack1`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].snack1.name} onChange={(e) => handleSelectChange(e.target)}>
                     <MenuItem value="" >
                         None
                     </MenuItem>
@@ -86,7 +91,7 @@ export default function DayCard({ day, meals, mealPlan, dispatch }) {
                     ))}
                 </Select>
                 <InputLabel id={`${day}-snackeroo2`}>Snackeroo 2</InputLabel>
-                <Select labelId={`${day}-snackeroo2`} name={`${day}-snack2`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].snack2} onChange={(e) => handleSelectChange(e.target)}>
+                <Select labelId={`${day}-snackeroo2`} name={`${day}-snack2`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].snack2.name} onChange={(e) => handleSelectChange(e.target)}>
                     <MenuItem value="" >
                         None
                     </MenuItem>

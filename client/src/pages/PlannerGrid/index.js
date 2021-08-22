@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import {MealPlanContext} from '../../utils/MealPlanContext';
+// import { useContext } from 'react';
+// import {MealPlanContext} from '../../utils/MealPlanContext';
 import Grid from '@material-ui/core/Grid';
 import DayCard from '../../components/DayCard';
 
@@ -42,7 +42,7 @@ export default function PlannerGrid() {
       "Raspberries"
     ]
   };
-  const { mealPlan, dispatch } = useContext(MealPlanContext);
+  // const { mealPlan, dispatch } = useContext(MealPlanContext);
 
   return (
     <Grid
@@ -55,8 +55,8 @@ export default function PlannerGrid() {
         <DayCard 
           key={day} 
           day={day} 
-          mealPlan={mealPlan} 
-          dispatch={dispatch} 
+          // mealPlan={mealPlan} 
+          // dispatch={dispatch} 
           meals={meals}
         />
       </Grid>
