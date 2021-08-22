@@ -16,7 +16,7 @@ import {
 import { CheckCircle as CheckCircleIcon } from '@material-ui/icons';
 
 // !!!
-import {template} from './Foodroid_Template';
+import {template} from '../../utils/Foodroid_Template';
 
 const useStyles = makeStyles((theme) => ({
     root: {
