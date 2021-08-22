@@ -1,10 +1,12 @@
-import MealPlanContext from '../../utils/MealPlanContext';
+import { useContext } from 'react';
+import {MealPlanContext} from '../../utils/MealPlanContext';
 import Grid from '@material-ui/core/Grid';
 import DayCard from '../../components/DayCard';
 
 const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
 export default function PlannerGrid() {
+  console.log("PlannerGrid");
   // TODO: Set from database call
   const meals = {
     breakfasts: [
@@ -40,31 +42,25 @@ export default function PlannerGrid() {
       "Raspberries"
     ]
   };
+  const { mealPlan, dispatch } = useContext(MealPlanContext);
 
   return (
-    <MealPlanContext.Consumer>
-      {({mealPlan, dispatch}) => {
-        return (
-          <Grid
-          container
-          justifyContent="space-evenly"
-          spacing={4}
-        >
-          {days.map(day => (
-            <Grid item xs={12} lg={3} key={day}>
-              <DayCard 
-                key={day} 
-                day={day} 
-                mealPlan={mealPlan} 
-                dispatch={dispatch} 
-                meals={meals}
-              />
-            </Grid>
-          ))}
-        </Grid>
-        )
-      }
-    }
-    </MealPlanContext.Consumer>
-  );
+    <Grid
+    container
+    justifyContent="space-evenly"
+    spacing={4}
+  >
+    {days.map(day => (
+      <Grid item xs={12} lg={3} key={day}>
+        <DayCard 
+          key={day} 
+          day={day} 
+          mealPlan={mealPlan} 
+          dispatch={dispatch} 
+          meals={meals}
+        />
+      </Grid>
+    ))}
+  </Grid>
+  )
 }
