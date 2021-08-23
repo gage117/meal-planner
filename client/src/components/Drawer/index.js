@@ -95,13 +95,13 @@ function Drawer({open, setOpen}) {
         </div>
         <Divider />
         <List>
-          {['Meal Planner', 'Shopping List', 'Saved Recipes', 'Explore Recipes', 'How Foodroid Works'].map((text, index) => (
+          {['Meal Planner', 'Shopping List', 'Saved Recipes', 'Explore Recipes', 'How Foodroid Works'].map((text) => (
             <>
               {(() => {
                 switch (text) {
                 case 'Meal Planner':
                   return (
-                    <Link to={"/"}>
+                    <Link to={"/"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <TodayIcon />
@@ -112,7 +112,7 @@ function Drawer({open, setOpen}) {
                   )
                 case 'Shopping List':
                   return (
-                    <Link to={"/shopping-list"}>
+                    <Link to={"/shopping-list"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <ListAltIcon />
@@ -123,7 +123,7 @@ function Drawer({open, setOpen}) {
                   )
                 case 'Saved Recipes':
                   return (
-                    <Link to={"/saved-recipes"}>
+                    <Link to={"/saved-recipes"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <FavoriteBorderIcon />
@@ -134,7 +134,7 @@ function Drawer({open, setOpen}) {
                   )
                 case 'Explore Recipes':
                   return (
-                    <Link to={"/explore"}>
+                    <Link to={"/explore"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <ExploreIcon />
@@ -145,7 +145,7 @@ function Drawer({open, setOpen}) {
                   )
                 case 'How Foodroid Works':
                   return (
-                    <Link to={"/how-it-works"}>
+                    <Link to={"/how-it-works"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <HelpOutlineIcon />
@@ -162,9 +162,9 @@ function Drawer({open, setOpen}) {
         </List>
         <Divider />
         <List>
-          {['My Profile', 'Logout'].map((text, index) => {
+          {['My Profile', 'Logout'].map((text) => {
             return text === 'My Profile' ? (
-                <Link to={"/profile"}>
+                <Link to={"/profile"} key={text}>
                   <ListItem button key={text}>
                     <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                       <AccountCircleIcon />
@@ -173,7 +173,7 @@ function Drawer({open, setOpen}) {
                   </ListItem>
                 </Link>
               ) : (
-                <Link to={"/logout"}> 
+                <Link to={"/logout"} key={text}> 
                   <ListItem button key={text}>
                     <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                       <ExitToAppIcon />
