@@ -35,6 +35,8 @@ export default function DayCard({ day, meals }) {
         dispatch({type: "MODIFY_MEALS", payload: {day, whichMeal, mealName}});
     }
 
+    console.log(mealPlan)
+
     return (
         <Card className={classes.cardContainer}>
             <Grid
@@ -47,7 +49,7 @@ export default function DayCard({ day, meals }) {
                 />
                 <InputLabel id={`${day}-breakfast`}>Breakfast</InputLabel>
                 <Select labelId={`${day}-breakfast`} name={`${day}-breakfast`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].breakfast.name || ""} onChange={(e) => handleSelectChange(e.target)}>
-                    <MenuItem value="" >
+                    <MenuItem value="none" >
                         None
                     </MenuItem>
                     {meals.breakfasts.map(meal => (
@@ -58,7 +60,7 @@ export default function DayCard({ day, meals }) {
                 </Select>
                 <InputLabel id={`${day}-lunch`}>Lunch</InputLabel>
                 <Select labelId={`${day}-lunch`} name={`${day}-lunch`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].lunch.name || ""} onChange={(e) => handleSelectChange(e.target)}>
-                    <MenuItem value="" >
+                    <MenuItem value="none" >
                         None
                     </MenuItem>
                     {meals.lunches.map(meal => (
@@ -69,7 +71,7 @@ export default function DayCard({ day, meals }) {
                 </Select>
                 <InputLabel id={`${day}-dinner`}>Dinner</InputLabel>
                 <Select labelId={`${day}-dinner`} name={`${day}-dinner`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].dinner.name || ""} onChange={(e) => handleSelectChange(e.target)}>
-                    <MenuItem value="" >
+                    <MenuItem value="none" >
                         None
                     </MenuItem>
                     {meals.dinners.map(meal => (
@@ -80,7 +82,7 @@ export default function DayCard({ day, meals }) {
                 </Select>
                 <InputLabel id={`${day}-snackeroo1`}>Snackeroo 1</InputLabel>
                 <Select labelId={`${day}-snackeroo1`} name={`${day}-snack1`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].snack1.name || ""} onChange={(e) => handleSelectChange(e.target)}>
-                    <MenuItem value="" >
+                    <MenuItem value="none" >
                         None
                     </MenuItem>
                     {meals.snacks.map(meal => (
@@ -91,7 +93,7 @@ export default function DayCard({ day, meals }) {
                 </Select>
                 <InputLabel id={`${day}-snackeroo2`}>Snackeroo 2</InputLabel>
                 <Select labelId={`${day}-snackeroo2`} name={`${day}-snack2`} className={classes.selectInput} value={mealPlan[day.toLowerCase()].snack2.name || ""} onChange={(e) => handleSelectChange(e.target)}>
-                    <MenuItem value="" >
+                    <MenuItem value="none" >
                         None
                     </MenuItem>
                     {meals.snacks.map(meal => (

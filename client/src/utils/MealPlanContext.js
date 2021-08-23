@@ -250,33 +250,36 @@ const reducer = (state, action) => {
     switch (action.type) {
       case "MODIFY_MEALS":
         const {payload} = action;
-        if (!payload.day || !payload.whichMeal || !payload.mealName) {
+        if (!payload.day || !payload.whichMeal) {
           return state;
         }
-        
-        // Filter through meals array to find meal object by mealName
-        let mealObj;
-        for(const mealArray of Object.values(template.meals)) {
-          for(const meal of mealArray) {
-            if(meal.name === payload.mealName) {
-              mealObj = meal;
+
+        if (payload.mealName === "") {
+          state[payload.day.toLowerCase()][payload.whichMeal.toLowerCase()] = {};
+        } else if (payload.mealName === "none") {
+          state[payload.day.toLowerCase()][payload.whichMeal.toLowerCase()] = {name: "none"};
+        } else {
+          // Filter through meals array to find meal object by mealName
+          let mealObj;
+          for(const mealArray of Object.values(template.meals)) {
+            for(const meal of mealArray) {
+              if(meal.name === payload.mealName) {
+                mealObj = meal;
+              }
             }
           }
+          if(!mealObj) return state
+
+          // Modify meal in state and then return copy of state
+          state[payload.day.toLowerCase()][payload.whichMeal.toLowerCase()] = {...mealObj};
         }
 
-        if(!mealObj) {
-          return state;
-        }
-
-        // Modify meal in state and then return copy of state
-        state[action.day.toLowerCase()][action.whichMeal.toLowerCase()] = {...mealObj};
         localStorage.setItem("mealPlan", JSON.stringify(state));
-        return state = {
-          ...state
-        };
+        return state = { ...state };
       case "MODIFY_INGREDIENT_TOTALS":
         // Modify ingredient totals
-        return;
+        state.ingredientTotals = action.payload;
+        return {...state};
       default:
         return state;
     }
