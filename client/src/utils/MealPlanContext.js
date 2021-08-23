@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import {template as meals} from './Foodroid_Template';
+import { template } from './Foodroid_Template';
 
 export const MealPlanContext = createContext();
 
@@ -246,8 +246,24 @@ const reducer = (state, action) => {
     if (!action.day || !action.whichMeal || !action.mealName) {
       return state;
     }
+    // Filter through meals array to find meal object by mealName
+    let mealObj;
+    for(const mealArray of Object.values(template.meals)) {
+      for(const meal of mealArray) {
+        if(meal.name === action.mealName) {
+          mealObj = meal;
+        }
+      }
+    }
+
+    if(!mealObj) {
+      return state;
+    }
+
+    console.log(mealObj)
+
     // Modify meal in state and then return copy of state
-    state[action.day.toLowerCase()][action.whichMeal.toLowerCase()] = action.mealName;
+    state[action.day.toLowerCase()][action.whichMeal.toLowerCase()] = {...mealObj};
     localStorage.setItem("mealPlan", JSON.stringify(state));
     return state = {
       ...state
