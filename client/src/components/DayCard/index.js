@@ -51,8 +51,8 @@ export default function DayCard({ day, meals }) {
                         None
                     </MenuItem>
                     {meals.breakfasts.map(meal => (
-                        <MenuItem key={meal} value={meal} >
-                            {meal}
+                        <MenuItem key={meal.name} value={meal.name} >
+                            {meal.name}
                         </MenuItem>
                     ))}
                 </Select>
@@ -62,8 +62,8 @@ export default function DayCard({ day, meals }) {
                         None
                     </MenuItem>
                     {meals.lunches.map(meal => (
-                        <MenuItem key={meal} value={meal} >
-                            {meal}
+                        <MenuItem key={meal.name} value={meal.name} >
+                            {meal.name}
                         </MenuItem>
                     ))}
                 </Select>
@@ -73,8 +73,8 @@ export default function DayCard({ day, meals }) {
                         None
                     </MenuItem>
                     {meals.dinners.map(meal => (
-                        <MenuItem key={meal} value={meal} >
-                            {meal}
+                        <MenuItem key={meal.name} value={meal.name} >
+                            {meal.name}
                         </MenuItem>
                     ))}
                 </Select>
@@ -84,8 +84,8 @@ export default function DayCard({ day, meals }) {
                         None
                     </MenuItem>
                     {meals.snacks.map(meal => (
-                        <MenuItem key={meal} value={meal} >
-                            {meal}
+                        <MenuItem key={meal.name} value={meal.name} >
+                            {meal.name}
                         </MenuItem>
                     ))}
                 </Select>
@@ -95,8 +95,8 @@ export default function DayCard({ day, meals }) {
                         None
                     </MenuItem>
                     {meals.snacks.map(meal => (
-                        <MenuItem key={meal} value={meal} >
-                            {meal}
+                        <MenuItem key={meal.name} value={meal.name} >
+                            {meal.name}
                         </MenuItem>
                     ))}
                 </Select>

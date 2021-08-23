@@ -1,44 +1,11 @@
 import Grid from '@material-ui/core/Grid';
 import DayCard from '../../components/DayCard';
+import {template} from '../../utils/Foodroid_Template';
 
 const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
 export default function PlannerGrid() {
-  // TODO: Set from database call
-  const meals = {
-    breakfasts: [
-      "Keto Egg Muffins",
-      "Fried Eggs",
-      "Omelette",
-      "Fancy Yogurt"
-    ],
-    lunches: [
-      "Tuna Lunch Salad",
-      "Keto Lettuce Wraps",
-      "Bacon Wrapped Asparagus",
-      "Keto Taquitos"
-    ],
-    dinners: [
-      "Keto Chili",
-      "Meatball Parm Casserole",
-      "Steak",
-      "Baked Salmon"
-    ],
-    snacks: [
-      "Beef Jerky",
-      "Hard Boiled Eggs",
-      "String Cheese",
-      "Pickles",
-      "Pork Rinds",
-      "Pecans",
-      "Almonds",
-      "Walnuts",
-      "Greek Yogurt",
-      "Cottage Cheese",
-      "Blackberries",
-      "Raspberries"
-    ]
-  };
+  // TODO: Set meals from database call
 
   return (
     <Grid
@@ -51,7 +18,7 @@ export default function PlannerGrid() {
         <DayCard 
           key={day} 
           day={day} 
-          meals={meals}
+          meals={template.meals}
         />
       </Grid>
     ))}
