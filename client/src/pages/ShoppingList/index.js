@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import {MealPlanContext} from '../../utils/MealPlanContext';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -11,12 +11,7 @@ import {
     IconButton,
     Box,
 } from '@material-ui/core';
-// import { DataGrid } from '@material-ui/data-grid';
-// import clsx from 'clsx';
 import { CheckCircle as CheckCircleIcon } from '@material-ui/icons';
-
-// !!!
-import {template} from '../../utils/Foodroid_Template';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,37 +30,16 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-// const rows = [
-//     { id:1, ingredient: 'Carrots', quantity: 3, unit: "" },
-//     { id:2, ingredient: 'Potatoes', quantity: 3, unit: "lbs" },
-//     { id:3, ingredient: 'Beef', quantity: 4, unit: "oz" },
-//   ];
-  
-//   const columns = [
-//     { field: 'id', headerName: 'ID', hide: true },
-//     { field: 'ingredient', headerName: 'Ingredient', width: 250 },
-//     { field: 'quantity', headerName: 'Quantity', width: 140 },
-//     { field: 'unit', headerName: 'Unit', width: 130 },
-//     { field: 'haveOnHand', headerName: 'Have On Hand', type: 'boolean', editable: true, width: 150,
-//         cellClassName: (params) => {
-//             clsx('onHand', {
-//                 false: !params.value,
-//                 true: !!params.value,
-//             })
-//         },    
-//     },
-//   ];
 
 function reduceIngredients(mealPlan) {
     const ingredientTotals = {};
     let idIncrementer = 0;
     // Go over each meal of the day\
-    Object.values(mealPlan.meals).map(mealArray => {
+    Object.values(mealPlan).forEach(mealArray => {
         // Go over each meal in that array
-        console.log("MealArray: ", mealArray);
-        return mealArray.map(meal => {
-            console.log("Meal: ", meal);
+        return Object.values(mealArray).forEach(meal => {
             // Go over each ingredient in that meal
+            if (!meal.ingredients) return;
             return meal.ingredients.forEach((ingredient) => {
                 // TODO: Implement unit conversion
                 if (ingredientTotals[ingredient.name] && ingredientTotals[ingredient.name].unit === ingredient.unit ) {
@@ -86,10 +60,14 @@ function reduceIngredients(mealPlan) {
 }
 
 export default function ShoppingList() {
-    const { mealPlan } = useContext(MealPlanContext);
+    const { mealPlan, dispatch } = useContext(MealPlanContext);
     const classes = useStyles();
 
-    template.ingredientTotals = reduceIngredients(template);
+    console.log(mealPlan);
+    useEffect(() => {
+        dispatch({type: "MODIFY_INGREDIENT_TOTALS", payload: reduceIngredients(mealPlan)})
+    }, []);
+    
 
     return (
         <Box className={classes.root}>
@@ -101,7 +79,7 @@ export default function ShoppingList() {
                 </Typography>
                 <div className={classes.demo}>
                     <List>
-                    {template.ingredientTotals.map((ingredient, index) => (
+                    {mealPlan.ingredientTotals && mealPlan.ingredientTotals.map((ingredient, index) => (
                         <ListItem key={index}>
                             <ListItemText primary={ingredient.ingredient} secondary={`Quantity: ${ingredient.quantity} ${ingredient.unit}`}/>
                             <ListItemSecondaryAction>
