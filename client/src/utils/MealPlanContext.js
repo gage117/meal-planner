@@ -243,17 +243,22 @@ const defaultState = {
 }
 
 const reducer = (state, action) => {
-    if (!action.type || !action.day || !action.whichMeal || !action.mealName) {
+    if (!action.type || !action.payload) {
       return state;
     }
     
     switch (action.type) {
       case "MODIFY_MEALS":
+        const {payload} = action;
+        if (!payload.day || !payload.whichMeal || !payload.mealName) {
+          return state;
+        }
+        
         // Filter through meals array to find meal object by mealName
         let mealObj;
         for(const mealArray of Object.values(template.meals)) {
           for(const meal of mealArray) {
-            if(meal.name === action.mealName) {
+            if(meal.name === payload.mealName) {
               mealObj = meal;
             }
           }
