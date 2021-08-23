@@ -32,7 +32,7 @@ export default function DayCard({ day, meals }) {
         const [day, whichMeal] = name.split('-');
         const mealName = value;
 
-        dispatch({day, whichMeal, mealName});
+        dispatch({type: "MODIFY_MEALS", day, whichMeal, mealName});
     }
 
     return (

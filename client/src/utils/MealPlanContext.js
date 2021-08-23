@@ -243,31 +243,38 @@ const defaultState = {
 }
 
 const reducer = (state, action) => {
-    if (!action.day || !action.whichMeal || !action.mealName) {
+    if (!action.type || !action.day || !action.whichMeal || !action.mealName) {
       return state;
     }
-    // Filter through meals array to find meal object by mealName
-    let mealObj;
-    for(const mealArray of Object.values(template.meals)) {
-      for(const meal of mealArray) {
-        if(meal.name === action.mealName) {
-          mealObj = meal;
+    
+    switch (action.type) {
+      case "MODIFY_MEALS":
+        // Filter through meals array to find meal object by mealName
+        let mealObj;
+        for(const mealArray of Object.values(template.meals)) {
+          for(const meal of mealArray) {
+            if(meal.name === action.mealName) {
+              mealObj = meal;
+            }
+          }
         }
-      }
+
+        if(!mealObj) {
+          return state;
+        }
+
+        // Modify meal in state and then return copy of state
+        state[action.day.toLowerCase()][action.whichMeal.toLowerCase()] = {...mealObj};
+        localStorage.setItem("mealPlan", JSON.stringify(state));
+        return state = {
+          ...state
+        };
+      case "MODIFY_INGREDIENT_TOTALS":
+        // Modify ingredient totals
+        return;
+      default:
+        return state;
     }
-
-    if(!mealObj) {
-      return state;
-    }
-
-    console.log(mealObj)
-
-    // Modify meal in state and then return copy of state
-    state[action.day.toLowerCase()][action.whichMeal.toLowerCase()] = {...mealObj};
-    localStorage.setItem("mealPlan", JSON.stringify(state));
-    return state = {
-      ...state
-    };
   }
 
 const MealPlanProvider = ({children}) => {
