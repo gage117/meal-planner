@@ -1,5 +1,4 @@
 import {Link} from 'react-router-dom';
-//* Auth0
 import { useAuth0 } from "@auth0/auth0-react";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {  Drawer as MuiDrawer,
@@ -82,7 +81,7 @@ function Drawer({open, setOpen}) {
         setOpen(false);
     };
 
-    const {loginWithRedirect, logout} = useAuth0();
+    const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
     
     return (
         <MuiDrawer
@@ -106,7 +105,7 @@ function Drawer({open, setOpen}) {
               {(() => {
                 switch (text) {
                 case 'Meal Planner':
-                  return (
+                  return isAuthenticated && (
                     <Link to={"/"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
@@ -117,7 +116,7 @@ function Drawer({open, setOpen}) {
                     </Link>
                   )
                 case 'Shopping List':
-                  return (
+                  return isAuthenticated && (
                     <Link to={"/shopping-list"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
@@ -128,7 +127,7 @@ function Drawer({open, setOpen}) {
                     </Link>
                   )
                 case 'Saved Recipes':
-                  return (
+                  return isAuthenticated && (
                     <Link to={"/saved-recipes"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
@@ -171,7 +170,7 @@ function Drawer({open, setOpen}) {
           {['My Profile', 'Login', 'Logout'].map((text) => {
             switch (text) {
               case 'My Profile':
-                return (
+                return isAuthenticated && (
                   <Link to={"/profile"} key={text}>
                     <ListItem button key={text}>
                       <ListItemIcon classes={{root: classes.iconWidthOverride}}>
@@ -191,7 +190,7 @@ function Drawer({open, setOpen}) {
                   </ListItem>
                 )
               case 'Logout':
-                return (
+                return isAuthenticated && (
                   <ListItem button key={text} onClick={() => logout({ returnTo: window.location.origin })}>
                     <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                       <ExitToAppIcon />
