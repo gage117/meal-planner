@@ -1,21 +1,23 @@
 import {Link} from 'react-router-dom';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import MuiDrawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import TodayIcon from '@material-ui/icons/Today';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import ExploreIcon from '@material-ui/icons/Explore';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import ListAltIcon from '@material-ui/icons/ListAlt';
+import {  Drawer as MuiDrawer,
+          List, 
+          Divider, 
+          IconButton, 
+          ListItem,
+          ListItemIcon,
+          ListItemText,
+        } from '@material-ui/core/';
+import {  ChevronLeft as ChevronLeftIcon, 
+          ChevronRight as ChevronRightIcon, 
+          Today as TodayIcon, 
+          FavoriteBorder as FavoriteBorderIcon,
+          Explore as ExploreIcon,
+          HelpOutline as  HelpOutlineIcon,
+          AccountCircle as AccountCircleIcon,
+          ExitToApp as ExitToAppIcon,
+          ListAlt as ListAltIcon,
+        } from '@material-ui/icons/';
 // import stylesheet simply for accessing pseudo-elements because inline styles don't allow access to them
 import "./styles.css"
 
