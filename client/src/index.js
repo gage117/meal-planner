@@ -9,7 +9,7 @@ ReactDOM.render(
   <Auth0Provider
     domain="foodroid.us.auth0.com"
     clientId="ZZ6ysWCwjVXx8I4t21BTzgdV9mUp6Ug0"
-    redirectUri={window.location.origin}
+    redirectUri={`${window.location.origin}/planner`}
     audience="https://foodroid.us.auth0.com/api/v2/"
     scope="read:current_user update:current_user_metadata"
   >
