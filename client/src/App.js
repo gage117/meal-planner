@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import {Drawer, drawerWidth} from './components/Drawer';
 import PlannerGrid from './pages/PlannerGrid';
 import ShoppingList from './pages/ShoppingList';
+import Profile from './pages/Profile';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,6 +52,7 @@ function App() {
                 <Route exact path="/" component={PlannerGrid} />
                 <Route path="/planner" component={PlannerGrid} />
                 <Route path="/shopping-list" component={ShoppingList} />
+                <Route path="/profile" component={Profile} />
               </Switch>
             </main>
           </Box>
