@@ -1,4 +1,6 @@
 import {Link} from 'react-router-dom';
+//* Auth0
+import { useAuth0 } from "@auth0/auth0-react";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MuiDrawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -77,6 +79,8 @@ function Drawer({open, setOpen}) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const {loginWithRedirect, logout} = useAuth0();
     
     return (
         <MuiDrawer
@@ -162,26 +166,41 @@ function Drawer({open, setOpen}) {
         </List>
         <Divider />
         <List>
-          {['My Profile', 'Logout'].map((text) => {
-            return text === 'My Profile' ? (
-                <Link to={"/profile"} key={text}>
-                  <ListItem button key={text}>
-                    <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                      <AccountCircleIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                </Link>
-              ) : (
-                <Link to={"/logout"} key={text}> 
-                  <ListItem button key={text}>
+          {['My Profile', 'Login', 'Logout'].map((text) => {
+            switch (text) {
+              case 'My Profile':
+                return (
+                  <Link to={"/profile"} key={text}>
+                    <ListItem button key={text}>
+                      <ListItemIcon classes={{root: classes.iconWidthOverride}}>
+                        <AccountCircleIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={text} />
+                    </ListItem>
+                  </Link>
+                );
+              case 'Login':
+                return (
+                  <ListItem button key={text} onClick={() => loginWithRedirect()}>
                     <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                       <ExitToAppIcon />
                     </ListItemIcon>
                     <ListItemText primary={text} />
                   </ListItem>
-                </Link>
-              )}
+                )
+              case 'Logout':
+                return (
+                  <ListItem button key={text} onClick={() => logout({ returnTo: window.location.origin })}>
+                    <ListItemIcon classes={{root: classes.iconWidthOverride}}>
+                      <ExitToAppIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                )
+              default:
+                break;
+            }
+            }
           )}
         </List>
       </MuiDrawer>
