@@ -35,7 +35,6 @@ export default function DayCard({ day, meals }) {
         dispatch({type: "MODIFY_MEALS", payload: {day, whichMeal, mealName}});
     }
 
-    console.log(mealPlan)
 
     return (
         <Card className={classes.cardContainer}>
