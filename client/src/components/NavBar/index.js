@@ -1,13 +1,16 @@
 import {useState} from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+import {
+          AppBar,
+          Toolbar,
+          Typography,
+          IconButton,
+          MenuItem,
+          Menu
+        } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar({setOpen}) {
   const classes = useStyles();
-  const [auth, setAuth] = useState(true);
+  const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -45,8 +48,7 @@ export default function NavBar({setOpen}) {
           <Typography variant="h6" className={classes.title}>
             Foodroid
           </Typography>
-          {auth && (
-            <div>
+          <div>
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -71,11 +73,24 @@ export default function NavBar({setOpen}) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                {isAuthenticated ? (
+                  ['Profile', 'My Account', 'Logout'].map((listItem) => {
+                    switch(listItem) {
+                      case 'Logout':
+                        return (
+                          <MenuItem onClick={logout} key={listItem}>Logout</MenuItem>
+                        )
+                      default:
+                        return (
+                          <MenuItem onClick={handleClose} key={listItem}>{listItem}</MenuItem>
+                        )
+                    }
+                  })
+                ) : (
+                  <MenuItem onClick={loginWithRedirect}>Login</MenuItem>
+                )}
               </Menu>
             </div>
-          )}
         </Toolbar>
       </AppBar>
     </div>
