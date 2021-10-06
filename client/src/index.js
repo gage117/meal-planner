@@ -8,7 +8,7 @@ ReactDOM.render(
   // <React.StrictMode>
   <Auth0Provider
     domain="foodroid.us.auth0.com"
-    clientId="0ie5UArn2bUnK0StLr6PKnFbfdOLCBNE"
+    clientId="ZZ6ysWCwjVXx8I4t21BTzgdV9mUp6Ug0"
     redirectUri={window.location.origin}
     audience="https://foodroid.us.auth0.com/api/v2/"
     scope="read:current_user update:current_user_metadata"
