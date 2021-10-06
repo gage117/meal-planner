@@ -63,7 +63,6 @@ export default function ShoppingList() {
     const { mealPlan, dispatch } = useContext(MealPlanContext);
     const classes = useStyles();
 
-    console.log(mealPlan);
     useEffect(() => {
         dispatch({type: "MODIFY_INGREDIENT_TOTALS", payload: reduceIngredients(mealPlan)})
     }, []);
