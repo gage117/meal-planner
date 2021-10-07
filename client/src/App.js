@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { useAuth0 } from "@auth0/auth0-react";
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import {CssBaseline, Box} from '@material-ui/core';
@@ -34,9 +35,14 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
+  const { isLoading } = useAuth0();
 
   // Drawer open/close state
   const [open, setOpen] = useState(false);
+
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
 
   return (
       <Router>
