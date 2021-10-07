@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
 import {MealPlanContext} from '../../utils/MealPlanContext';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -63,12 +64,14 @@ export default function ShoppingList() {
     const { mealPlan, dispatch } = useContext(MealPlanContext);
     const classes = useStyles();
 
+    const { isAuthenticated } = useAuth0();
+
     useEffect(() => {
         dispatch({type: "MODIFY_INGREDIENT_TOTALS", payload: reduceIngredients(mealPlan)})
     }, []);
     
 
-    return (
+    return isAuthenticated && (
         <Box className={classes.root}>
         {/* <DataGrid rows={template.ingredientTotals} columns={columns} autoHeight checkboxSelection/> */}
         <Grid container spacing={3}>

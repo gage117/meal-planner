@@ -1,3 +1,4 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import Grid from '@material-ui/core/Grid';
 import DayCard from '../../components/DayCard';
 import {template} from '../../utils/Foodroid_Template';
@@ -7,7 +8,9 @@ const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
 export default function PlannerGrid() {
   // TODO: Set meals from database call
 
-  return (
+  const { isAuthenticated } = useAuth0();
+
+  return isAuthenticated && (
     <Grid
     container
     justifyContent="space-evenly"
