@@ -171,6 +171,81 @@ const seeds = {
         "low-fat",
       ],
       user: { _id: "" },
+    },
+    {
+      name: "Char Siu Pork",
+      instructions: [
+        "Adjust rack to middle position and preheat oven to 425 degrees. In a small bowl, combine hoisin, ketchup, half the brown sugar, and 1 tsp vinegar (2 tsp for 4 servings). Pat pork dry with paper towels and season with salt and pepper. Place on a lightly oiled baking sheet. Roast until almost cooked through, 18-20 minutes.",
+        "Once pork is almost cooked through, remove baking sheet from oven. Heat broiler to high or oven to 500 degrees. Brush pork with a layer of hoisin glaze (save the rest for serving). Broil or roast until pork is cooked through and glaze is tacky and lightly charred, 2-3 minutes more. Set aside on a cutting board to rest.",
+        "Thinly slice pork crosswise. Drizzle pork with reserved hoisin glaze. Garnish with sesame seeds as you like."
+      ],
+      mealOfTheDay: "Dinner",
+      ingredients: [
+        {
+          name: "Pork Tenderloin",
+          quantity: 12,
+          unit: "oz",
+        },
+        {
+          name: "Potatoes",
+          quantity: 3,
+          unit: "",
+        },
+        {
+          name: "Broccoli",
+          quantity: 1.5,
+          unit: "crowns",
+        },
+        {
+          name: "Shallot",
+          quantity: 1,
+          unit: "",
+        },
+        {
+          name: "Sherry Wine",
+          quantity: 5,
+          unit: "tsp",
+        },
+        {
+          name: "Beef Stock",
+          quantity: 5,
+          unit: "tsp",
+        },
+        {
+          name: "Sour Cream",
+          quantity: 2,
+          unit: "tbsp",
+        },
+        {
+          name: "Vegetable Oil",
+          quantity: 4,
+          unit: "tsp",
+        },
+        {
+          name: "Olive Oil",
+          quantity: 7,
+          unit: "tsp",
+        },
+        {
+          name: "Butter",
+          quantity: 1,
+          unit: "tbsp",
+        },
+        {
+          name: "Black Pepper"
+        },
+        {
+          name: "Salt"
+        },
+      ],
+      tags: [
+        "steak",
+        "potatoes",
+        "broccoli",
+        "shallot",
+        "low-fat",
+      ],
+      user: { _id: "" },
     }
   ],
   snacks: [
