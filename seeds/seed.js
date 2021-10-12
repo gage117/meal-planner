@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+const recipeSeeds = require('./seeds-gage');
+
 
 mongoose.connect("mongodb://localhost/meal-planner", {
   useNewUrlParser: true,
@@ -381,7 +383,7 @@ const seedDB = async () => {
     siteRecipeSeeds[1].user = userData.insertedIds["1"];
     siteRecipeSeeds[2].user = userData.insertedIds["1"];
     const recipeData = await db.SiteRecipe.collection.insertMany(
-      siteRecipeSeeds
+      recipeSeeds
     );
     console.log("Seeded:", recipeData.ops.length, "recipes");
 
@@ -395,7 +397,7 @@ const seedDB = async () => {
       }
     );
     const updatedUser2 = await db.User.findOneAndUpdate(
-      { _id: userData.insertedIds["0"] },
+      { _id: userData.insertedIds["1"] },
       {
         $push: {
           siteRecipes: { $each: [recipeData.insertedIds["0"], recipeData.insertedIds["2"]] },

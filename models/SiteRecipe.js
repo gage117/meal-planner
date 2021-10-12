@@ -9,6 +9,9 @@ const recipeSchema = new Schema({
     type: String,
     required: true
   },
+  mealOfTheDay: {
+    type: String
+  },
   instructions: {
     type: String,
     required: true
@@ -18,6 +21,9 @@ const recipeSchema = new Schema({
     quantity: Number,
     unit: String
   }],
+  servings: {
+    type: Number
+  },
   tags: [String],
   user: {
     type: Schema.Types.ObjectId,
