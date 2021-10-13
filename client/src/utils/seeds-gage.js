@@ -2,6 +2,7 @@ const seeds = {
   breakfasts: [
     {
       name: "French Toast",
+      description: "A delicious golden-brown french toast that is meant to be (but doesn't HAVE to be...) murdered in cinnamon.",
       instructions: [
         "Write out step 1",
         "Write out step 2",
