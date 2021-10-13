@@ -8,6 +8,7 @@ const seeds = {
         "Write out step 3"
       ],
       mealOfTheDay: "Breakfast",
+      image: "https://res.cloudinary.com/gageeide/image/upload/c_scale,q_100,w_1206/v1634160798/foodroid/french-toast_djrnze.webp",
       ingredients: [
         {
           name: "Bread",
@@ -52,6 +53,7 @@ const seeds = {
         "Write out step 3"
       ],
       mealOfTheDay: "Lunch",
+      image: "https://res.cloudinary.com/gageeide/image/upload/v1634162510/foodroid/caesar-salad_zr6txh.webp",
       ingredients: [
         {
           name: "Cubed Chicken",
@@ -98,7 +100,7 @@ const seeds = {
   ],
   dinners: [
     {
-      name: "Steak with Sherry Shallot Sauce, Roasted Potatoes, and Seared Veggies",
+      name: "Steak with Sherry Shallot Sauce",
       instructions: [
         "Write out step 1",
         "Write out step 2",
@@ -297,6 +299,7 @@ const seeds = {
         "Write out step 3"
       ],
       mealOfTheDay: "Snack",
+      image: "https://res.cloudinary.com/gageeide/image/upload/v1634163446/foodroid/hard-boiled-eggs_v7qdze.webp",
       ingredients: [
         {
           name: "Eggs",
