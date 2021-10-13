@@ -187,66 +187,106 @@ const seeds = {
           unit: "oz",
         },
         {
-          name: "Potatoes",
-          quantity: 3,
-          unit: "",
-        },
-        {
-          name: "Broccoli",
-          quantity: 1.5,
-          unit: "crowns",
-        },
-        {
-          name: "Shallot",
-          quantity: 1,
-          unit: "",
-        },
-        {
-          name: "Sherry Wine",
-          quantity: 5,
-          unit: "tsp",
-        },
-        {
-          name: "Beef Stock",
-          quantity: 5,
-          unit: "tsp",
-        },
-        {
-          name: "Sour Cream",
+          name: "Hoisin Sauce",
           quantity: 2,
           unit: "tbsp",
         },
         {
-          name: "Vegetable Oil",
-          quantity: 4,
+          name: "Ketchup",
+          quantity: 2,
+          unit: "tbsp",
+        },
+        {
+          name: "Brown Sugar",
+          quantity: .5,
+          unit: "tbsp",
+        },
+        {
+          name: "White Vinegar",
+          quantity: 1,
           unit: "tsp",
         },
         {
-          name: "Olive Oil",
-          quantity: 7,
-          unit: "tsp",
-        },
-        {
-          name: "Butter",
+          name: "Sesame Seeds",
           quantity: 1,
           unit: "tbsp",
         },
         {
-          name: "Black Pepper"
-        },
-        {
-          name: "Salt"
-        },
+          name: "Vegetable Oil",
+          quantity: 1,
+          unit: "tbsp",
+        }
       ],
       tags: [
-        "steak",
-        "potatoes",
-        "broccoli",
-        "shallot",
+        "pork",
+        "hoisin"
+      ],
+      user: { _id: "" },
+    },
+    {
+      name: "Poblano Beef Tacos with Lime Crema",
+      instructions: [
+        "Write out step 1",
+        "Write out step 2",
+        "Write out step 3"
+      ],
+      mealOfTheDay: "Dinner",
+      ingredients: [
+        {
+          name: "Beef",
+          quantity: 10,
+          unit: "oz",
+        },
+        {
+          name: "Red Onion",
+          quantity: 1,
+          unit: "",
+        },
+        {
+          name: "Poblano Pepper",
+          quantity: 1,
+          unit: "",
+        },
+        {
+          name: "Lime",
+          quantity: 1,
+          unit: "",
+        },
+        {
+          name: "Sour Cream",
+          quantity: 4,
+          unit: "tbsp",
+        },
+        {
+          name: "Chipotle Powder",
+          quantity: 1,
+          unit: "tsp",
+        },
+        {
+          name: "Flour Tortillas",
+          quantity: 6,
+          unit: "",
+        },
+        {
+          name: "Cheese",
+          quantity: .25,
+          unit: "cup",
+        },
+        {
+          name: "Vegetable Oil",
+          quantity: 1,
+          unit: "tsp",
+        }
+      ],
+      tags: [
+        "beef",
+        "tacos",
+        "chipotle",
+        "lime",
         "low-fat",
       ],
       user: { _id: "" },
-    }
+    },
   ],
   snacks: [
     {
