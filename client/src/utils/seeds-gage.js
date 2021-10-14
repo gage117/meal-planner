@@ -47,7 +47,8 @@ const seeds = {
   ],
   lunches: [
     {
-      name: "Caesar Salad",
+      name: "Chicken Caesar Salad",
+      description: "Just your normal ol' average everyday Chicken Caesar Salad",
       instructions: [
         "Write out step 1",
         "Write out step 2",
@@ -102,6 +103,7 @@ const seeds = {
   dinners: [
     {
       name: "Steak with Sherry Shallot Sauce",
+      description: "A delicious Sherry Shallot Sauce made to go with Steak. Also included in the recipe are Potatoes and Seared Veggies.",
       instructions: [
         "Write out step 1",
         "Write out step 2",
@@ -177,6 +179,7 @@ const seeds = {
     },
     {
       name: "Char Siu Pork",
+      description: "Pork Tenderloin covered with a hoisin-based glaze and baked to perfection.",
       instructions: [
         "Adjust rack to middle position and preheat oven to 425 degrees. In a small bowl, combine hoisin, ketchup, half the brown sugar, and 1 tsp vinegar (2 tsp for 4 servings). Pat pork dry with paper towels and season with salt and pepper. Place on a lightly oiled baking sheet. Roast until almost cooked through, 18-20 minutes.",
         "Once pork is almost cooked through, remove baking sheet from oven. Heat broiler to high or oven to 500 degrees. Brush pork with a layer of hoisin glaze (save the rest for serving). Broil or roast until pork is cooked through and glaze is tacky and lightly charred, 2-3 minutes more. Set aside on a cutting board to rest.",
@@ -228,6 +231,7 @@ const seeds = {
     },
     {
       name: "Poblano Beef Tacos with Lime Crema",
+      description: "Amazing street-style tacos with a lime and chipotle crema",
       instructions: [
         "Write out step 1",
         "Write out step 2",
@@ -294,6 +298,7 @@ const seeds = {
   snacks: [
     {
       name: "Hard Boiled Eggs",
+      description: "Eggs. Hard Boiled.",
       instructions: [
         "Write out step 1",
         "Write out step 2",
@@ -319,6 +324,7 @@ const seeds = {
     },
     {
       name: "Beef Jerky",
+      description: "Jerky of the Beef variety",
       instructions: [
         "Write out step 1",
         "Write out step 2",
