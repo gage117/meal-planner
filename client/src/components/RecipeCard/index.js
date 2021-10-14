@@ -4,19 +4,15 @@ import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import Chip from '@material-ui/core/Chip';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { ListItem } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,9 +25,8 @@ const useStyles = makeStyles((theme) => ({
   autoMarginLeft: {
     marginLeft: 'auto'
   },
-  removeTopAndBottomMargin: {
-    marginTop: 0,
-    marginBottom: 0
+  removeBottomPadding: {
+    padding: '16px 16px 0 16px',
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -59,6 +54,7 @@ export default function RecipeCard({ meal }) {
     <Card className={classes.root}>
       <CardHeader
         title={meal.name}
+        className={classes.removeBottomPadding}
       />
       {/* <CardMedia
         className={classes.media}
