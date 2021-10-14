@@ -2,12 +2,14 @@ const seeds = {
   breakfasts: [
     {
       name: "French Toast",
+      description: "A delicious golden-brown french toast that is meant to be (but doesn't HAVE to be...) murdered in cinnamon.",
       instructions: [
         "Write out step 1",
         "Write out step 2",
         "Write out step 3"
       ],
       mealOfTheDay: "Breakfast",
+      image: "https://res.cloudinary.com/gageeide/image/upload/c_scale,q_100,w_1206/v1634160798/foodroid/french-toast_djrnze.webp",
       ingredients: [
         {
           name: "Bread",
@@ -45,13 +47,15 @@ const seeds = {
   ],
   lunches: [
     {
-      name: "Caesar Salad",
+      name: "Chicken Caesar Salad",
+      description: "Just your normal ol' average everyday Chicken Caesar Salad",
       instructions: [
         "Write out step 1",
         "Write out step 2",
         "Write out step 3"
       ],
       mealOfTheDay: "Lunch",
+      image: "https://res.cloudinary.com/gageeide/image/upload/v1634162510/foodroid/caesar-salad_zr6txh.webp",
       ingredients: [
         {
           name: "Cubed Chicken",
@@ -98,7 +102,8 @@ const seeds = {
   ],
   dinners: [
     {
-      name: "Steak with Sherry Shallot Sauce, Roasted Potatoes, and Seared Veggies",
+      name: "Steak with Sherry Shallot Sauce",
+      description: "A delicious Sherry Shallot Sauce made to go with Steak. Also included in the recipe are Potatoes and Seared Veggies.",
       instructions: [
         "Write out step 1",
         "Write out step 2",
@@ -174,6 +179,7 @@ const seeds = {
     },
     {
       name: "Char Siu Pork",
+      description: "Pork Tenderloin covered with a hoisin-based glaze and baked to perfection.",
       instructions: [
         "Adjust rack to middle position and preheat oven to 425 degrees. In a small bowl, combine hoisin, ketchup, half the brown sugar, and 1 tsp vinegar (2 tsp for 4 servings). Pat pork dry with paper towels and season with salt and pepper. Place on a lightly oiled baking sheet. Roast until almost cooked through, 18-20 minutes.",
         "Once pork is almost cooked through, remove baking sheet from oven. Heat broiler to high or oven to 500 degrees. Brush pork with a layer of hoisin glaze (save the rest for serving). Broil or roast until pork is cooked through and glaze is tacky and lightly charred, 2-3 minutes more. Set aside on a cutting board to rest.",
@@ -225,6 +231,7 @@ const seeds = {
     },
     {
       name: "Poblano Beef Tacos with Lime Crema",
+      description: "Amazing street-style tacos with a lime and chipotle crema",
       instructions: [
         "Write out step 1",
         "Write out step 2",
@@ -291,12 +298,14 @@ const seeds = {
   snacks: [
     {
       name: "Hard Boiled Eggs",
+      description: "Eggs. Hard Boiled.",
       instructions: [
         "Write out step 1",
         "Write out step 2",
         "Write out step 3"
       ],
       mealOfTheDay: "Snack",
+      image: "https://res.cloudinary.com/gageeide/image/upload/v1634163446/foodroid/hard-boiled-eggs_v7qdze.webp",
       ingredients: [
         {
           name: "Eggs",
@@ -315,6 +324,7 @@ const seeds = {
     },
     {
       name: "Beef Jerky",
+      description: "Jerky of the Beef variety",
       instructions: [
         "Write out step 1",
         "Write out step 2",
