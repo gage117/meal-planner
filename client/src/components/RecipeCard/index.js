@@ -50,12 +50,19 @@ export default function RecipeCard({ meal }) {
     setExpanded(!expanded);
   };
 
+  //TODO
+  const handleFavoriteClick = () => {};
+
+  //TODO
+  const handleShareClick = () => {};
+
   return (
     <Card className={classes.root}>
       <CardHeader
         title={meal.name}
         className={classes.removeBottomPadding}
       />
+      {/* TODO */}
       {/* <CardMedia
         className={classes.media}
         image={meal.image}
@@ -69,9 +76,10 @@ export default function RecipeCard({ meal }) {
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
+        {/* TODO */}
+        {/* <IconButton aria-label="share">
           <ShareIcon />
-        </IconButton>
+        </IconButton> */}
         <Typography className={classes.autoMarginLeft} >More Info</Typography>
         <IconButton
           className={clsx(classes.expand, {
