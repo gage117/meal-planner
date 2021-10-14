@@ -10,6 +10,7 @@ import LandingPage from './pages/LandingPage';
 import PlannerGrid from './pages/PlannerGrid';
 import ShoppingList from './pages/ShoppingList';
 import Profile from './pages/Profile';
+import SavedRecipes from './pages/SavedRecipes';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,6 +61,7 @@ function App() {
                 <Route path="/planner" component={PlannerGrid} />
                 <Route path="/shopping-list" component={ShoppingList} />
                 <Route path="/profile" component={Profile} />
+                <Route path="/saved-recipes" component={SavedRecipes} />
               </Switch>
             </main>
           </Box>
