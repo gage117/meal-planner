@@ -12,7 +12,7 @@ export default function SavedRecipes() {
       spacing={4}
     >
       {meals.map(meal => (
-        <Grid item xs={12} lg={3} key={meal.name}>
+        <Grid item key={meal.name}>
           <RecipeCard 
             key={meal.name} 
             meal={meal}
