@@ -355,4 +355,4 @@ const recipeSeeds = [
   ...seeds.snacks,
 ]
 
-module.exports = recipeSeeds;
+export default recipeSeeds;
