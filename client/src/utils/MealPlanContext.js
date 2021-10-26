@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import meals from '../utils/seeds-gage';
+import meals from '../utils/Foodroid_Template';
 
 export const MealPlanContext = createContext();
 
