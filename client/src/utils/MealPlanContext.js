@@ -95,6 +95,10 @@ const reducer = (state, action) => {
         // Modify ingredient totals
         state.ingredientTotals = action.payload;
         return {...state};
+      case "CLEAR_MEAL_PLAN":
+        state = defaultState;
+        localStorage.setItem("mealPlan", JSON.stringify(state));
+        return state;
       default:
         return state;
     }

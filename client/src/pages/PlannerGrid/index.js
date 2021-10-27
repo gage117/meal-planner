@@ -1,4 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { useContext } from 'react';
+import {MealPlanContext} from '../../utils/MealPlanContext';
 import { Button, Grid } from '@material-ui/core';
 import DayCard from '../../components/DayCard';
 import template from '../../utils/Foodroid_Template';
@@ -6,6 +8,8 @@ import template from '../../utils/Foodroid_Template';
 const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
 export default function PlannerGrid() {
+  
+  const { mealPlan, dispatch } = useContext(MealPlanContext);
   // TODO: Set meals from database call
   const meals = {
     breakfasts: [],
@@ -36,10 +40,14 @@ export default function PlannerGrid() {
   }
 
   const { isAuthenticated } = useAuth0();
+
+  const clearMealPlan = () => {
+    dispatch({type: "CLEAR_MEAL_PLAN", payload: {}})
+  }
   
   return (
     <>
-      <Button variant="contained" color="primary">Clear Meal Plan</Button>
+      <Button variant="contained" color="primary" onClick={clearMealPlan}>Clear Meal Plan</Button>
       <Grid
         container
         justifyContent="space-evenly"
