@@ -37,7 +37,7 @@ export default function PlannerGrid() {
 
   const { isAuthenticated } = useAuth0();
   
-  return isAuthenticated && (
+  return (
     <>
       <Button variant="contained" color="primary">Clear Meal Plan</Button>
       <Grid

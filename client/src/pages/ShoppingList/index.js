@@ -71,9 +71,8 @@ export default function ShoppingList() {
     }, []);
     
 
-    return isAuthenticated && (
+    return (
         <Box className={classes.root}>
-        {/* <DataGrid rows={template.ingredientTotals} columns={columns} autoHeight checkboxSelection/> */}
         <Grid container spacing={3}>
             <Grid item xs={12} md={6} className={classes.root}>
                 <Typography variant="h6" className={classes.title}>
@@ -81,7 +80,7 @@ export default function ShoppingList() {
                 </Typography>
                 <div className={classes.demo}>
                     <List>
-                    {mealPlan.ingredientTotals && mealPlan.ingredientTotals.map((ingredient, index) => (
+                    {mealPlan.ingredientTotals && mealPlan.ingredientTotals.length ? mealPlan.ingredientTotals.map((ingredient, index) => (
                         <ListItem key={index}>
                             <ListItemText primary={ingredient.ingredient} secondary={`Quantity: ${ingredient.quantity} ${ingredient.unit}`}/>
                             <ListItemSecondaryAction>
@@ -90,7 +89,13 @@ export default function ShoppingList() {
                                 </IconButton>
                             </ListItemSecondaryAction>
                         </ListItem>
-                        ))}
+                        ))
+                    : (
+                        <Typography variant="h4">
+                            No meals selected in the meal planner. Try selecting some meals in the meal planner to see their ingredients as well as their amounts aggregated into a shopping list here.
+                        </Typography>
+                    )
+                    }
                     </List>
                 </div>
             </Grid>

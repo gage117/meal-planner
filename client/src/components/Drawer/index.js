@@ -105,8 +105,8 @@ function Drawer({open, setOpen}) {
               {(() => {
                 switch (text) {
                 case 'Meal Planner':
-                  return isAuthenticated && (
-                    <Link to={"/"} key={text}>
+                  return (
+                    <Link to={"/planner"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <TodayIcon />
@@ -116,7 +116,7 @@ function Drawer({open, setOpen}) {
                     </Link>
                   )
                 case 'Shopping List':
-                  return isAuthenticated && (
+                  return (
                     <Link to={"/shopping-list"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
@@ -127,7 +127,7 @@ function Drawer({open, setOpen}) {
                     </Link>
                   )
                 case 'Saved Recipes':
-                  return isAuthenticated && (
+                  return (
                     <Link to={"/saved-recipes"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
@@ -137,28 +137,28 @@ function Drawer({open, setOpen}) {
                       </ListItem>
                     </Link>
                   )
-                case 'Explore Recipes':
-                  return (
-                    <Link to={"/explore"} key={text}>
-                      <ListItem button key={text}>
-                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                          <ExploreIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    </Link>
-                  )
-                case 'How Foodroid Works':
-                  return (
-                    <Link to={"/how-it-works"} key={text}>
-                      <ListItem button key={text}>
-                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                          <HelpOutlineIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    </Link>
-                  )
+                // case 'Explore Recipes':
+                //   return (
+                //     <Link to={"/explore"} key={text}>
+                //       <ListItem button key={text}>
+                //         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
+                //           <ExploreIcon />
+                //         </ListItemIcon>
+                //         <ListItemText primary={text} />
+                //       </ListItem>
+                //     </Link>
+                //   )
+                // case 'How Foodroid Works':
+                //   return (
+                //     <Link to={"/how-it-works"} key={text}>
+                //       <ListItem button key={text}>
+                //         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
+                //           <HelpOutlineIcon />
+                //         </ListItemIcon>
+                //         <ListItemText primary={text} />
+                //       </ListItem>
+                //     </Link>
+                //   )
                 default:
                   break;
               }})()}
