@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import CssBaseline from '@mui/material/CssBaseline';
-import createEmotionCache from '../src/createEmotionCache';
+import createEmotionCache from '../utils/createEmotionCache';
 
 const clientSideEmotionCache = createEmotionCache();
 
