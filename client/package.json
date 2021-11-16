@@ -6,9 +6,11 @@
     "@emotion/cache": "latest",
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
+    "@mui/icons-material": "^5.1.0",
     "@mui/material": "latest",
-    "prop-types": "latest",
+    "@mui/styles": "latest",
     "next": "^12.0.4",
+    "prop-types": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
