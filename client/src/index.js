@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { Auth0Provider } from "@auth0/auth0-react";
 import MealPlanProvider from './utils/MealPlanContext';
+import UserProvider from './utils/UserContext';
 
 ReactDOM.render(
   // <React.StrictMode>
@@ -14,7 +15,9 @@ ReactDOM.render(
     scope="read:current_user update:current_user_metadata"
   >
     <MealPlanProvider>
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </MealPlanProvider>
   </Auth0Provider>,
   // </React.StrictMode>,
