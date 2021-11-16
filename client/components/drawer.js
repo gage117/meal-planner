@@ -1,6 +1,6 @@
-import {Link} from 'react-router-dom';
-import { useAuth0 } from "@auth0/auth0-react";
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import {Link} from 'next/link';
+// import { useAuth0 } from "@auth0/auth0-react";
+import { makeStyles, useTheme } from '@mui/styles';
 import {  Drawer as MuiDrawer,
           List, 
           Divider, 
@@ -8,7 +8,7 @@ import {  Drawer as MuiDrawer,
           ListItem,
           ListItemIcon,
           ListItemText,
-        } from '@material-ui/core/';
+        } from '@mui/material';
 import {  ChevronLeft as ChevronLeftIcon, 
           ChevronRight as ChevronRightIcon, 
           Today as TodayIcon, 
@@ -18,9 +18,21 @@ import {  ChevronLeft as ChevronLeftIcon,
           AccountCircle as AccountCircleIcon,
           ExitToApp as ExitToAppIcon,
           ListAlt as ListAltIcon,
-        } from '@material-ui/icons/';
+        } from '@mui/icons-material/';
+
 // import stylesheet simply for accessing pseudo-elements because inline styles don't allow access to them
-import "./styles.css"
+// import "./drawer-styles.css"
+// a {
+//   text-decoration: none;
+// }
+
+// a:link {
+//   color: #000;
+// }
+
+// a:visited {
+//   color: #000;
+// }
 
 // drawerWidth variable is declared in Main page
 const drawerWidth = 240;
