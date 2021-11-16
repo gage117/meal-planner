@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import { useAuth0 } from "@auth0/auth0-react";
-import { makeStyles } from '@material-ui/core/styles';
+// import { useAuth0 } from "@auth0/auth0-react";
+import { makeStyles } from '@mui/styles';
 import {
           AppBar,
           Toolbar,
@@ -8,17 +8,17 @@ import {
           IconButton,
           MenuItem,
           Menu
-        } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+        } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+  // menuButton: {
+  //   marginRight: theme.spacing(2),
+  // },
   title: {
     flexGrow: 1,
   },
@@ -26,7 +26,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar({setOpen}) {
   const classes = useStyles();
-  const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
+  
+  //!
+  // const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
+  const isAuthenticated = true;
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -73,7 +77,7 @@ export default function NavBar({setOpen}) {
                 open={open}
                 onClose={handleClose}
               >
-                {isAuthenticated ? (
+                {/* {isAuthenticated ? (
                   ['Profile', 'My Account', 'Logout'].map((listItem) => {
                     switch(listItem) {
                       case 'Logout':
@@ -88,7 +92,7 @@ export default function NavBar({setOpen}) {
                   })
                 ) : (
                   <MenuItem onClick={loginWithRedirect}>Login</MenuItem>
-                )}
+                )} */}
               </Menu>
             </div>
         </Toolbar>

@@ -4,6 +4,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
 import createEmotionCache from '../utils/createEmotionCache';
 
+import NavBar from '../components/navbar';
+
 const clientSideEmotionCache = createEmotionCache();
 
 export default function MyApp(props) {
@@ -16,6 +18,7 @@ export default function MyApp(props) {
     </Head>
     <>
       <CssBaseline />
+      <NavBar />
       <Component {...pageProps} />
     </>
   </CacheProvider>
