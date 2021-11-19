@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Head from 'next/head';
-import theme from '../utils/random';
+import theme from '../utils/theme';
 import {  makeStyles } from '@mui/styles';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, Box } from '@mui/material';
