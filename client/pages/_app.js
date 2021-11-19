@@ -2,26 +2,26 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Head from 'next/head';
-import { makeStyles } from '@mui/styles';
-// import { createTheme, ThemeProvider } from '@mui/material/styles';
+import theme from '../utils/random';
+import {  makeStyles } from '@mui/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, Box } from '@mui/material';
 import { CacheProvider } from '@emotion/react';
 import createEmotionCache from '../utils/createEmotionCache';
 
-import ThemeProvider from '../utils/ThemeContext';
 import NavBar from '../components/navbar';
 import {Drawer, drawerWidth} from '../components/drawer';
 
 const clientSideEmotionCache = createEmotionCache();
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: "flex"
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-      transition: theme.transitions.create('margin', {
+    transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
@@ -53,7 +53,7 @@ export default function MyApp(props) {
       <title>My page</title>
       <meta name="viewport" content="initial-scale=1, width=device-width" />
     </Head>
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <NavBar setOpen={setOpen} open={open} />
       <Box className={classes.root}>
@@ -65,7 +65,6 @@ export default function MyApp(props) {
           })}
         />
       </Box>
-      {/* <Component {...pageProps} /> */}
     </ThemeProvider>
   </CacheProvider>
 }
