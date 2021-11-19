@@ -1,4 +1,4 @@
-import {Link} from 'next/link';
+import Link from 'next/link';
 // import { useAuth0 } from "@auth0/auth0-react";
 import { makeStyles, useTheme } from '@mui/styles';
 import {  Drawer as MuiDrawer,
@@ -93,8 +93,9 @@ function Drawer({open, setOpen}) {
         setOpen(false);
     };
 
-    const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
-    
+    // const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
+    //!
+
     return (
         <MuiDrawer
         className={classes.drawer}
@@ -118,7 +119,7 @@ function Drawer({open, setOpen}) {
                 switch (text) {
                 case 'Meal Planner':
                   return (
-                    <Link to={"/planner"} key={text}>
+                    <Link href={"/planner"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <TodayIcon />
@@ -129,7 +130,7 @@ function Drawer({open, setOpen}) {
                   )
                 case 'Shopping List':
                   return (
-                    <Link to={"/shopping-list"} key={text}>
+                    <Link href={"/shopping-list"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <ListAltIcon />
@@ -140,7 +141,7 @@ function Drawer({open, setOpen}) {
                   )
                 case 'Saved Recipes':
                   return (
-                    <Link to={"/saved-recipes"} key={text}>
+                    <Link href={"/saved-recipes"} key={text}>
                       <ListItem button key={text}>
                         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                           <FavoriteBorderIcon />
@@ -149,28 +150,28 @@ function Drawer({open, setOpen}) {
                       </ListItem>
                     </Link>
                   )
-                // case 'Explore Recipes':
-                //   return (
-                //     <Link to={"/explore"} key={text}>
-                //       <ListItem button key={text}>
-                //         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                //           <ExploreIcon />
-                //         </ListItemIcon>
-                //         <ListItemText primary={text} />
-                //       </ListItem>
-                //     </Link>
-                //   )
-                // case 'How Foodroid Works':
-                //   return (
-                //     <Link to={"/how-it-works"} key={text}>
-                //       <ListItem button key={text}>
-                //         <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                //           <HelpOutlineIcon />
-                //         </ListItemIcon>
-                //         <ListItemText primary={text} />
-                //       </ListItem>
-                //     </Link>
-                //   )
+                {/* case 'Explore Recipes':
+                  return (
+                    <Link href={"/explore"} key={text}>
+                      <ListItem button key={text}>
+                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
+                          <ExploreIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    </Link>
+                  )
+                case 'How Foodroid Works':
+                  return (
+                    <Link href={"/how-it-works"} key={text}>
+                      <ListItem button key={text}>
+                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
+                          <HelpOutlineIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    </Link>
+                  ) */}
                 default:
                   break;
               }})()}
@@ -182,8 +183,9 @@ function Drawer({open, setOpen}) {
           {['My Profile', 'Login', 'Logout'].map((text) => {
             switch (text) {
               case 'My Profile':
-                return isAuthenticated && (
-                  <Link to={"/profile"} key={text}>
+                {/* return isAuthenticated && */} 
+                return (
+                  <Link href={"/profile"} key={text}>
                     <ListItem button key={text}>
                       <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                         <AccountCircleIcon />
@@ -193,8 +195,9 @@ function Drawer({open, setOpen}) {
                   </Link>
                 );
               case 'Login':
+                {/* <ListItem button key={text} onClick={() => loginWithRedirect()}> */}
                 return (
-                  <ListItem button key={text} onClick={() => loginWithRedirect()}>
+                  <ListItem button key={text} >
                     <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                       <ExitToAppIcon />
                     </ListItemIcon>
@@ -202,8 +205,10 @@ function Drawer({open, setOpen}) {
                   </ListItem>
                 )
               case 'Logout':
-                return isAuthenticated && (
-                  <ListItem button key={text} onClick={() => logout({ returnTo: window.location.origin })}>
+                {/* return isAuthenticated && (
+                <ListItem button key={text} onClick={() => logout({ returnTo: window.location.origin })}> */}
+                return (
+                  <ListItem button key={text} >
                     <ListItemIcon classes={{root: classes.iconWidthOverride}}>
                       <ExitToAppIcon />
                     </ListItemIcon>
