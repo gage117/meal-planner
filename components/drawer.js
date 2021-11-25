@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Link from 'next/link';
 // import { useAuth0 } from "@auth0/auth0-react";
 import { makeStyles, useTheme } from '@mui/styles';
@@ -19,6 +20,7 @@ import {  ChevronLeft as ChevronLeftIcon,
           ExitToApp as ExitToAppIcon,
           ListAlt as ListAltIcon,
         } from '@mui/icons-material/';
+import { v4 as uuid } from 'uuid';
 
 // import stylesheet simply for accessing pseudo-elements because inline styles don't allow access to them
 // import "./drawer-styles.css"
@@ -85,17 +87,33 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
+let upperList = ['Meal Planner', 'Shopping List', 'Saved Recipes', 'Explore Recipes', 'How Foodroid Works'];
+let lowerList = ['My Profile', 'Login', 'Logout'];
+// Turn each item into an object and add unique id to each list item
+upperList = upperList.map( listItem => {
+  return {
+    id: uuid(),
+    text: listItem
+  }
+});
+lowerList = lowerList.map( listItem => {
+  return {
+    id: uuid(),
+    text: listItem
+  }
+});
+
 function Drawer({open, setOpen}) {  
     const classes = useStyles();
     const theme = useTheme();
 
     const handleDrawerClose = () => {
-        setOpen(false);
+      setOpen(false);
     };
-
+    
     // const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
     //!
-
+    
     return (
         <MuiDrawer
         className={classes.drawer}
@@ -113,106 +131,102 @@ function Drawer({open, setOpen}) {
         </div>
         <Divider />
         <List>
-          {['Meal Planner', 'Shopping List', 'Saved Recipes', 'Explore Recipes', 'How Foodroid Works'].map((text) => (
-            <>
-              {(() => {
-                switch (text) {
-                case 'Meal Planner':
-                  return (
-                    <Link href={"/planner"} key={text}>
-                      <ListItem button key={text}>
-                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                          <TodayIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    </Link>
-                  )
-                case 'Shopping List':
-                  return (
-                    <Link href={"/shopping-list"} key={text}>
-                      <ListItem button key={text}>
-                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                          <ListAltIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    </Link>
-                  )
-                case 'Saved Recipes':
-                  return (
-                    <Link href={"/saved-recipes"} key={text}>
-                      <ListItem button key={text}>
-                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                          <FavoriteBorderIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    </Link>
-                  )
-                {/* case 'Explore Recipes':
-                  return (
-                    <Link href={"/explore"} key={text}>
-                      <ListItem button key={text}>
-                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                          <ExploreIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    </Link>
-                  )
-                case 'How Foodroid Works':
-                  return (
-                    <Link href={"/how-it-works"} key={text}>
-                      <ListItem button key={text}>
-                        <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                          <HelpOutlineIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    </Link>
-                  ) */}
-                default:
-                  break;
-              }})()}
-            </>
-          ))}
+          {upperList.map((listItem) => {
+            switch (listItem.text) {
+            case 'Meal Planner':
+              return (
+                <Link href={"/planner"} key={listItem.id}>
+                  <ListItem button >
+                    <ListItemIcon classes={{root: classes.iconWidthOverride}} >
+                      <TodayIcon  />
+                    </ListItemIcon>
+                    <ListItemText primary={listItem.text}  />
+                  </ListItem>
+                </Link>
+              )
+            case 'Shopping List':
+              return (
+                <Link href={"/shopping-list"} key={listItem.id}>
+                  <ListItem button >
+                    <ListItemIcon classes={{root: classes.iconWidthOverride}} >
+                      <ListAltIcon  />
+                    </ListItemIcon>
+                    <ListItemText primary={listItem.text}  />
+                  </ListItem>
+                </Link>
+              )
+            case 'Saved Recipes':
+              return (
+                <Link href={"/saved-recipes"} key={listItem.id}>
+                  <ListItem button >
+                    <ListItemIcon classes={{root: classes.iconWidthOverride}} >
+                      <FavoriteBorderIcon  />
+                    </ListItemIcon>
+                    <ListItemText primary={listItem.text}  />
+                  </ListItem>
+                </Link>
+              )
+            {/* case 'Explore Recipes':
+              return (
+                <Link href={"/explore"} key={listItem.id}>
+                  <ListItem button key={listItem.id}>
+                    <ListItemIcon classes={{root: classes.iconWidthOverride}}>
+                      <ExploreIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={listItem.text} />
+                  </ListItem>
+                </Link>
+              )
+            case 'How Foodroid Works':
+              return (
+                <Link href={"/how-it-works"} key={listItem.id}>
+                  <ListItem button key={listItem.id}>
+                    <ListItemIcon classes={{root: classes.iconWidthOverride}}>
+                      <HelpOutlineIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={listItem.text} />
+                  </ListItem>
+                </Link>
+              ) */}
+            default:
+              break;
+          }})}
         </List>
         <Divider />
         <List>
-          {['My Profile', 'Login', 'Logout'].map((text) => {
-            switch (text) {
+          {lowerList.map((listItem) => {
+            switch (listItem.text) {
               case 'My Profile':
                 {/* return isAuthenticated && */} 
                 return (
-                  <Link href={"/profile"} key={text}>
-                    <ListItem button key={text}>
-                      <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                        <AccountCircleIcon />
+                  <Link href={"/profile"} key={listItem.id}>
+                    <ListItem button >
+                      <ListItemIcon classes={{root: classes.iconWidthOverride}} >
+                        <AccountCircleIcon  />
                       </ListItemIcon>
-                      <ListItemText primary={text} />
+                      <ListItemText primary={listItem.text}  />
                     </ListItem>
                   </Link>
                 );
               case 'Login':
-                {/* <ListItem button key={text} onClick={() => loginWithRedirect()}> */}
+                {/* <ListItem button key={listItem.id} onClick={() => loginWithRedirect()}> */}
                 return (
-                  <ListItem button key={text} >
-                    <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                      <ExitToAppIcon />
+                  <ListItem button key={listItem.id} >
+                    <ListItemIcon classes={{root: classes.iconWidthOverride}} >
+                      <ExitToAppIcon  />
                     </ListItemIcon>
-                    <ListItemText primary={text} />
+                    <ListItemText primary={listItem.text}  />
                   </ListItem>
                 )
               case 'Logout':
                 {/* return isAuthenticated && (
-                <ListItem button key={text} onClick={() => logout({ returnTo: window.location.origin })}> */}
+                <ListItem button key={listItem.id} onClick={() => logout({ returnTo: window.location.origin })}> */}
                 return (
-                  <ListItem button key={text} >
-                    <ListItemIcon classes={{root: classes.iconWidthOverride}}>
-                      <ExitToAppIcon />
+                  <ListItem button key={listItem.id} >
+                    <ListItemIcon classes={{root: classes.iconWidthOverride}} >
+                      <ExitToAppIcon  />
                     </ListItemIcon>
-                    <ListItemText primary={text} />
+                    <ListItemText primary={listItem.text}  />
                   </ListItem>
                 )
               default:

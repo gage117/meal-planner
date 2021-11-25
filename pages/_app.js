@@ -60,7 +60,8 @@ export default function MyApp(props) {
         <Drawer open={open} setOpen={setOpen} drawerWidth={drawerWidth} />
         <Component
           {...pageProps}
-          className={clsx(classes.content, {
+          open={open}
+          classes={clsx(classes.content, {
             [classes.contentShift]: open,
           })}
         />
