@@ -10,6 +10,7 @@ import { CssBaseline, Box } from '@mui/material';
 import { CacheProvider } from '@emotion/react';
 import createEmotionCache from '../utils/createEmotionCache';
 
+import MealPlanProvider from '../utils/MealPlanContext';
 import NavBar from '../components/navbar';
 import {Drawer, drawerWidth} from '../components/drawer';
 
@@ -52,6 +53,7 @@ export default function MyApp(props) {
   return (
     <CacheProvider value={emotionCache}> 
     <UserProvider>
+    <MealPlanProvider>
       <Head>
         <title>My page</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -70,6 +72,7 @@ export default function MyApp(props) {
           />
         </Box>
       </ThemeProvider>
+    </MealPlanProvider>
     </UserProvider>
     </CacheProvider>
   )}
