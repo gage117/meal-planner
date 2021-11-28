@@ -1,9 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useContext } from 'react';
-import {MealPlanContext} from '../../utils/MealPlanContext';
-import { Button, Grid } from '@material-ui/core';
-import DayCard from '../../components/DayCard';
-import template from '../../utils/Foodroid_Template';
+import {MealPlanContext} from '../utils/MealPlanContext';
+import { Button, Grid } from '@mui/material';
+import DayCard from '../components/day-card';
+import template from '../utils/Foodroid_Template';
 
 const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
