@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Auth0Provider } from '@auth0/auth0-react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Head from 'next/head';
@@ -48,27 +49,34 @@ export default function MyApp(props) {
   //   return <div>Loading ...</div>;
   // }
 
-  return <CacheProvider value={emotionCache}> 
-    <Head>
-      <title>My page</title>
-      <meta name="viewport" content="initial-scale=1, width=device-width" />
-    </Head>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <NavBar setOpen={setOpen} open={open} />
-      <Box className={classes.root}>
-        <Drawer open={open} setOpen={setOpen} drawerWidth={drawerWidth} />
-        <Component
-          {...pageProps}
-          open={open}
-          classes={clsx(classes.content, {
-            [classes.contentShift]: open,
-          })}
-        />
-      </Box>
-    </ThemeProvider>
-  </CacheProvider>
-}
+  return (
+    <CacheProvider value={emotionCache}> 
+    <Auth0Provider
+      domain={process.env.AUTH0_DOMAIN}
+      client_id={process.env.AUTH0_CLIENT_ID}
+      redirect_uri={'http://localhost:3000/'}
+    >
+      <Head>
+        <title>My page</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </Head>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <NavBar setOpen={setOpen} open={open} />
+        <Box className={classes.root}>
+          <Drawer open={open} setOpen={setOpen} drawerWidth={drawerWidth} />
+          <Component
+            {...pageProps}
+            open={open}
+            classes={clsx(classes.content, {
+              [classes.contentShift]: open,
+            })}
+          />
+        </Box>
+      </ThemeProvider>
+    </Auth0Provider>
+    </CacheProvider>
+  )}
 
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
