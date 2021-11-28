@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
-import {MealPlanContext} from '../../utils/MealPlanContext';
-import { makeStyles } from '@material-ui/core/styles';
+import {MealPlanContext} from '../utils/MealPlanContext';
+import { makeStyles } from '@mui/styles';
 import {
     Grid, 
     Typography,
@@ -11,8 +11,8 @@ import {
     ListItemSecondaryAction,
     IconButton,
     Box,
-} from '@material-ui/core';
-import { CheckCircle as CheckCircleIcon } from '@material-ui/icons';
+} from '@mui/material';
+import { CheckCircle as CheckCircleIcon } from '@mui/icons-material';
 
 const useStyles = makeStyles((theme) => ({
     root: {
