@@ -1,6 +1,6 @@
-import { Button, Grid } from '@material-ui/core';
-import RecipeCard from '../../components/RecipeCard';
-import meals from '../../utils/seeds-gage';
+import { Button, Grid } from '@mui/material';
+import RecipeCard from '../components/recipe-card';
+import meals from '../utils/seeds-gage';
 
 export default function SavedRecipes() {
   // TODO: Set meals from database call
