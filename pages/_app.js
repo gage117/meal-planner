@@ -52,8 +52,8 @@ export default function MyApp(props) {
   return (
     <CacheProvider value={emotionCache}> 
     <Auth0Provider
-      domain={process.env.AUTH0_DOMAIN}
-      client_id={process.env.AUTH0_CLIENT_ID}
+      domain="foodroid.us.auth0.com"
+      clientId="ZZ6ysWCwjVXx8I4t21BTzgdV9mUp6Ug0"
       redirect_uri={'http://localhost:3000/'}
     >
       <Head>
