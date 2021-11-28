@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Auth0Provider } from '@auth0/auth0-react';
+import { UserProvider } from '@auth0/nextjs-auth0';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Head from 'next/head';
@@ -51,11 +51,7 @@ export default function MyApp(props) {
 
   return (
     <CacheProvider value={emotionCache}> 
-    <Auth0Provider
-      domain="foodroid.us.auth0.com"
-      clientId="ZZ6ysWCwjVXx8I4t21BTzgdV9mUp6Ug0"
-      redirect_uri={'http://localhost:3000/'}
-    >
+    <UserProvider>
       <Head>
         <title>My page</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -74,7 +70,7 @@ export default function MyApp(props) {
           />
         </Box>
       </ThemeProvider>
-    </Auth0Provider>
+    </UserProvider>
     </CacheProvider>
   )}
 
