@@ -1,5 +1,5 @@
-import {useState} from 'react';
-// import { useAuth0 } from "@auth0/auth0-react";
+import { useState } from 'react';
+import { useUser } from "@auth0/nextjs-auth0";
 import { makeStyles } from '@mui/styles';
 import {
           AppBar,
@@ -11,6 +11,7 @@ import {
         } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,12 +25,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function NavBar({setOpen}) {
   const classes = useStyles();
   
-  //!
-  // const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
-  const isAuthenticated = true;
+  const { user } = useUser();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -77,12 +77,12 @@ export default function NavBar({setOpen}) {
                 open={open}
                 onClose={handleClose}
               >
-                {/* {isAuthenticated ? (
+                {user ? (
                   ['Profile', 'My Account', 'Logout'].map((listItem) => {
                     switch(listItem) {
                       case 'Logout':
                         return (
-                          <MenuItem onClick={logout} key={listItem}>Logout</MenuItem>
+                          <MenuItem key={listItem} onClick={() => window.location.replace("api/auth/logout")} >Logout</MenuItem>
                         )
                       default:
                         return (
@@ -91,8 +91,8 @@ export default function NavBar({setOpen}) {
                     }
                   })
                 ) : (
-                  <MenuItem onClick={loginWithRedirect}>Login</MenuItem>
-                )} */}
+                  <MenuItem onClick={() => window.location.replace("api/auth/login")}>Login</MenuItem>
+                )}
               </Menu>
             </div>
         </Toolbar>
