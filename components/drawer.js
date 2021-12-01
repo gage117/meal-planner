@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
-// import { useAuth0 } from "@auth0/auth0-react";
+import { useUser } from "@auth0/nextjs-auth0";
 import { makeStyles, useTheme } from '@mui/styles';
 import {  Drawer as MuiDrawer,
           List, 
@@ -22,6 +22,7 @@ import {  ChevronLeft as ChevronLeftIcon,
         } from '@mui/icons-material/';
 import { v4 as uuid } from 'uuid';
 
+//!
 // import stylesheet simply for accessing pseudo-elements because inline styles don't allow access to them
 // import "./drawer-styles.css"
 // a {
@@ -111,9 +112,9 @@ function Drawer({open, setOpen}) {
       setOpen(false);
     };
     
-    // const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
-    //!
-    
+    const { user, loading } = useUser();
+
+    if (loading) return <p>...</p>;
     return (
         <MuiDrawer
         className={classes.drawer}
@@ -197,8 +198,7 @@ function Drawer({open, setOpen}) {
           {lowerList.map((listItem) => {
             switch (listItem.text) {
               case 'My Profile':
-                {/* return isAuthenticated && */} 
-                return (
+                return user && (
                   <Link href={"/profile"} key={listItem.id}>
                     <ListItem button >
                       <ListItemIcon classes={{root: classes.iconWidthOverride}} >
@@ -210,7 +210,7 @@ function Drawer({open, setOpen}) {
                 );
               case 'Login':
                 {/* <ListItem button key={listItem.id} onClick={() => loginWithRedirect()}> */}
-                return (
+                return !user && (
                   <ListItem button key={listItem.id} onClick={() => window.location.replace("api/auth/login")}>
                     <ListItemIcon classes={{root: classes.iconWidthOverride}} >
                       <ExitToAppIcon  />
@@ -219,9 +219,7 @@ function Drawer({open, setOpen}) {
                   </ListItem>
                 )
               case 'Logout':
-                {/* return isAuthenticated && (
-                <ListItem button key={listItem.id} onClick={() => logout({ returnTo: window.location.origin })}> */}
-                return (
+                return user && (
                     <ListItem button key={listItem.id} onClick={() => window.location.replace("/api/auth/logout?returnTo=" + window.location.origin)}>
                       <ListItemIcon classes={{root: classes.iconWidthOverride}} >
                         <ExitToAppIcon  />
