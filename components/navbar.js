@@ -3,6 +3,7 @@ import { useUser } from "@auth0/nextjs-auth0";
 import { makeStyles } from '@mui/styles';
 import {
           AppBar,
+          Avatar,
           Toolbar,
           Typography,
           IconButton,
@@ -60,7 +61,11 @@ export default function NavBar({setOpen}) {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                {user ? (
+                  <Avatar alt={user.name} src={user.picture} />
+                ) : (
+                  <AccountCircle />
+                )}
               </IconButton>
               <Menu
                 id="menu-appbar"
