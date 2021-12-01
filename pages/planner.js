@@ -1,4 +1,4 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import { useUser } from "@auth0/nextjs-auth0";
 import { useContext } from 'react';
 import {MealPlanContext} from '../utils/MealPlanContext';
 import { Box, Button, Grid } from '@mui/material';
@@ -8,8 +8,10 @@ import template from '../utils/Foodroid_Template';
 const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
 export default function PlannerGrid(props) {
-  
+
   const { mealPlan, dispatch } = useContext(MealPlanContext);
+  const { user, error, isLoading } = useUser();
+
   // TODO: Set meals from database call
   const meals = {
     breakfasts: [],
@@ -39,11 +41,14 @@ export default function PlannerGrid(props) {
     i++;
   }
 
-  const { isAuthenticated } = useAuth0();
-
   const clearMealPlan = () => {
     dispatch({type: "CLEAR_MEAL_PLAN", payload: {}})
   }
+
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
+  if (!user) return <a href="/api/auth/login">Login</a>;
   
   return (
     <Box className={props.classes}>
