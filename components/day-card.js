@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import {MealPlanContext} from '../../utils/MealPlanContext';
-import { makeStyles } from '@material-ui/core/styles';
+import {MealPlanContext} from '../utils/MealPlanContext';
+import { makeStyles } from '@mui/styles';
 import {
         Card,
         CardHeader,
@@ -8,12 +8,7 @@ import {
         Select,
         InputLabel,
         MenuItem
-        } from '@material-ui/core/';
-// import CardHeader from '@material-ui/core/CardHeader';
-// import Grid from '@material-ui/core/Grid';
-// import Select from '@material-ui/core/Select';
-// import InputLabel from '@material-ui/core/InputLabel';
-// import MenuItem from '@material-ui/core/MenuItem';
+        } from '@mui/material';
 
 const useStyles = makeStyles(theme => ({
     cardContainer: {

@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useEffect } from "react";
 import meals from '../utils/Foodroid_Template';
 
 export const MealPlanContext = createContext();
@@ -105,8 +105,15 @@ const reducer = (state, action) => {
   }
 
 const MealPlanProvider = ({children}) => {
-    // Initialize meal plan from local storage or set to default template
-    const [mealPlan, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem("mealPlan")) || defaultState);
+    // Initialize meal plan to default template
+    const [mealPlan, dispatch] = useReducer(reducer, defaultState);
+
+    useEffect(() => { // Load meal plan from local storage, must be within useEffect in Next.js
+      const mealPlanFromStorage = JSON.parse(localStorage.getItem("mealPlan"));
+      if (mealPlanFromStorage) {
+        dispatch({type: "MODIFY_MEALS", payload: mealPlanFromStorage});
+      }
+    }, []);
     
     return (
         <MealPlanContext.Provider value={{mealPlan, dispatch}}>

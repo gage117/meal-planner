@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
-import { useAuth0 } from "@auth0/auth0-react";
-import {MealPlanContext} from '../../utils/MealPlanContext';
-import { makeStyles } from '@material-ui/core/styles';
+import { useUser } from "@auth0/nextjs-auth0";
+import {MealPlanContext} from '../utils/MealPlanContext';
+import { makeStyles } from '@mui/styles';
 import {
     Grid, 
     Typography,
@@ -11,8 +11,8 @@ import {
     ListItemSecondaryAction,
     IconButton,
     Box,
-} from '@material-ui/core';
-import { CheckCircle as CheckCircleIcon } from '@material-ui/icons';
+} from '@mui/material';
+import { CheckCircle as CheckCircleIcon } from '@mui/icons-material';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,11 +24,11 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     demo: {
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: "#f2f2f2",
     },
     title: {
       margin: theme.spacing(4, 0, 2),
-    },
+    }
   }));
 
 
@@ -60,20 +60,24 @@ function reduceIngredients(mealPlan) {
     return Object.values(ingredientTotals).sort((a, b) => a.ingredient.localeCompare(b.ingredient));
 }
 
-export default function ShoppingList() {
+export default function ShoppingList(props) {
     const { mealPlan, dispatch } = useContext(MealPlanContext);
     const classes = useStyles();
 
-    const { isAuthenticated } = useAuth0();
+    const { user, error, isLoading } = useUser();
 
     useEffect(() => {
         dispatch({type: "MODIFY_INGREDIENT_TOTALS", payload: reduceIngredients(mealPlan)})
     }, []);
+
     
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>{error.message}</div>;
+    if (!user) return <a href="/api/auth/login">Login</a>;
 
     return (
-        <Box className={classes.root}>
-        <Grid container spacing={3}>
+        <Box className={props.classes}> {/* Merge classes */}
+        <Grid container spacing={3} className={classes.root}>
             <Grid item xs={12} md={6} className={classes.root}>
                 <Typography variant="h6" className={classes.title}>
                     Shopping List
