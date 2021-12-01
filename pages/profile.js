@@ -1,6 +1,6 @@
 import { useUser } from "@auth0/nextjs-auth0";
 
-const Profile = () => {
+const Profile = (props) => {
   const { user, error, isLoading } = useUser();
 
   if (isLoading) return <div>Loading...</div>;
@@ -9,7 +9,7 @@ const Profile = () => {
 
   return (
     user && (
-      <div>
+      <div className={props.classes}>
         <img src={user.picture} alt={user.name} />
         <h2>{user.name}</h2>
         <p>{user.email}</p>

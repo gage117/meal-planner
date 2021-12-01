@@ -1,13 +1,13 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useContext } from 'react';
 import {MealPlanContext} from '../utils/MealPlanContext';
-import { Button, Grid } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import DayCard from '../components/day-card';
 import template from '../utils/Foodroid_Template';
 
 const days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
-export default function PlannerGrid() {
+export default function PlannerGrid(props) {
   
   const { mealPlan, dispatch } = useContext(MealPlanContext);
   // TODO: Set meals from database call
@@ -46,7 +46,7 @@ export default function PlannerGrid() {
   }
   
   return (
-    <>
+    <Box className={props.classes}>
       <Button variant="contained" color="primary" onClick={clearMealPlan}>Clear Meal Plan</Button>
       <Grid
         container
@@ -63,6 +63,6 @@ export default function PlannerGrid() {
           </Grid>
         ))}
       </Grid>
-    </>
+    </Box>
   )
 }

@@ -60,7 +60,7 @@ function reduceIngredients(mealPlan) {
     return Object.values(ingredientTotals).sort((a, b) => a.ingredient.localeCompare(b.ingredient));
 }
 
-export default function ShoppingList() {
+export default function ShoppingList(props) {
     const { mealPlan, dispatch } = useContext(MealPlanContext);
     const classes = useStyles();
 
@@ -72,7 +72,7 @@ export default function ShoppingList() {
     
 
     return (
-        <Box className={classes.root}>
+        <Box className={{...classes.root, ...props.classes}}> {/* Merge classes */}
         <Grid container spacing={3}>
             <Grid item xs={12} md={6} className={classes.root}>
                 <Typography variant="h6" className={classes.title}>
