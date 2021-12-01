@@ -211,27 +211,23 @@ function Drawer({open, setOpen}) {
               case 'Login':
                 {/* <ListItem button key={listItem.id} onClick={() => loginWithRedirect()}> */}
                 return (
-                  <a href={"/api/auth/login"} key={listItem.id}>
-                    <ListItem button >
-                      <ListItemIcon classes={{root: classes.iconWidthOverride}} >
-                        <ExitToAppIcon  />
-                      </ListItemIcon>
-                      <ListItemText primary={listItem.text}  />
-                    </ListItem>
-                  </a>
+                  <ListItem button key={listItem.id} onClick={() => window.location.replace("api/auth/login")}>
+                    <ListItemIcon classes={{root: classes.iconWidthOverride}} >
+                      <ExitToAppIcon  />
+                    </ListItemIcon>
+                    <ListItemText primary={listItem.text}  />
+                  </ListItem>
                 )
               case 'Logout':
                 {/* return isAuthenticated && (
                 <ListItem button key={listItem.id} onClick={() => logout({ returnTo: window.location.origin })}> */}
                 return (
-                  <a href="/api/auth/logout" key={listItem.id} >
-                    <ListItem button >
+                    <ListItem button key={listItem.id} onClick={() => window.location.replace("/api/auth/logout?returnTo=" + window.location.origin)}>
                       <ListItemIcon classes={{root: classes.iconWidthOverride}} >
                         <ExitToAppIcon  />
                       </ListItemIcon>
                       <ListItemText primary={listItem.text}  />
                     </ListItem>
-                  </a>
                 )
               default:
                 break;
