@@ -40,15 +40,10 @@ const useStyles = makeStyles(() => ({
 
 export default function MyApp(props) {
   const classes = useStyles();
-  // const { isLoading } = useAuth0();
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   // Drawer open/close state
   const [open, setOpen] = useState(false);
-
-  // if (isLoading) {
-  //   return <div>Loading ...</div>;
-  // }
 
   return (
     <CacheProvider value={emotionCache}> 
