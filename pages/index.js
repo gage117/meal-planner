@@ -1,16 +1,4 @@
-import { useState, useEffect } from "react"
-
 const LandingPage = (props) => {
-  const [ divStyle, setDivStyle ] = useState({})
-  
-  useEffect( () => {
-    if( props.open ){
-      setDivStyle({marginLeft: "220px"});
-    } else {
-      setDivStyle({marginLeft: 0})
-    }
-  }, [props.open])
-
   return (
     <div className={props.classes}>
       <h1>Hello!</h1>
