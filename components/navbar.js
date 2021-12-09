@@ -48,7 +48,7 @@ export default function NavBar({setOpen}) {
       <AppBar position="static">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} onClick={() => setOpen(true)} color="inherit" aria-label="menu">
-            <MenuIcon />
+            <MenuIcon id="menuButton" />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Foodroid
