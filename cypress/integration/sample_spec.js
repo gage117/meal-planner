@@ -1,11 +1,8 @@
 describe('My First Test', () => {
-  it('Does not do much!', () => {
-    expect(true).to.equal(true)
-  })
-})
+  it('Visits the home page', () => {
+    cy.visit('http://localhost:3000');
 
-describe('My First Test', () => {
-  it('Does not do much!', () => {
-    expect(true).to.equal(false)
+    cy.get("#menuButton").click();
+    cy.contains("Login").click();
   })
 })
