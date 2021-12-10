@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "concurrently": "^6.4.0",
-    "cypress": "^9.1.1"
+    "cypress": "^9.1.1",
+    "dotenv": "^10.0.0"
   }
 }
