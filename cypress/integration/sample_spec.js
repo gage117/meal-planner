@@ -7,7 +7,7 @@ describe('My First Test', () => {
   })
 
   it('Visits the home page', () => {
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
 
     cy.get("#menuButton").click();
   })
